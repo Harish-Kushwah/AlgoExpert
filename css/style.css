@@ -95,6 +95,13 @@ nav {
   color: #fff;
   padding: 18px 30px;
   font-weight: 0px;
+  border: 0.5px solid var(--main);
+
+}
+.cta-button:hover{
+  background-color: #FFFFFF;
+  color: var(--main);
+  transition-duration:0.5s;
 }
 .hero-image {
   aspect-ratio: 1.43;
@@ -272,6 +279,11 @@ nav {
   border-bottom: 4px solid #280261;
   max-width: 400px;
 }
+.about-card:hover{
+  scale: 1.01;
+  transition-duration: 0.5s;
+  cursor: pointer;
+} 
 .card-title {
   color: #7b2bf4;
   font-size: 25px;
@@ -289,7 +301,7 @@ nav {
 .card-description {
   color: #000;
   font-size: 17px;
-  margin: 32px 29px 0 18px;
+  margin: 32px 29px 20px 18px;
 }
 .card-divider {
   aspect-ratio: 90.91;
@@ -304,6 +316,9 @@ nav {
   .about-content {
     display: flex;
     flex-wrap: wrap;
+  }
+  .about-card{
+    min-width: 350px;
   }
 }
 
