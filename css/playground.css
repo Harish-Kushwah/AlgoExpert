@@ -1,0 +1,127 @@
+.sub-header {
+  display: flex;
+  box-shadow: 0 1px 2px 1px rgba(61, 61, 61, 0.1);
+  color: #212121;
+  justify-content: flex-start;
+  padding: 10px;
+  background-color: #ffffff;
+  height: 80px;
+  align-items: center;
+  margin: 10px;
+}
+.sub-header p{
+    font-size: 25px;
+    font-weight: 600;
+    margin: auto 0px;
+}
+.container1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.left-container,.right-container{
+  box-shadow: 0 1px 2px 1px rgba(61, 61, 61, 0.1);
+  margin: 5px;
+  height: 80vh;
+}
+.left-container{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    box-shadow: none;
+}
+.right-container{
+    width: 69%;
+}
+.input-container,.controls-container{
+  box-shadow: 0 1px 2px 1px rgba(61, 61, 61, 0.1);
+  width: 100%;
+  /* height: 70%; */
+  margin-left: 10px;
+  margin-bottom: 10px;
+  padding: 20px 50px;
+}
+.controls-container{
+  padding: 20px 50px;
+}
+.input-container{
+  height: 40%;
+}
+.inputs{
+  margin-top: 10px;
+  width: 100%;
+  height: 38px;
+  padding-left:5px ;
+}
+.btns{
+  display: flex;
+  margin-top: 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+.mbtn{
+  width: 100px;
+  height: 40px;
+  border: 0.5px;
+  border-radius: 2px;
+  color: white;
+}
+.start{
+  background-color: #7B2BF4;
+}
+.reset{
+  background-color: #0A991A;
+}
+.pause{
+  background-color: #FF295E;
+}
+.generate{
+  margin: 10px 0px;
+}
+.range{
+  margin-top: 0px;
+  accent-color: #7B2BF4;
+  cursor: pointer;
+}
+.inp-group{
+  margin-bottom: 5px;
+}
+.group{
+  display: flex;
+}
+.group .inputs{
+  margin-right: 5px;
+}
+.graph-container{
+  /* display: none; */
+}
+#clear-page{
+  width: 35px;
+  height: 35px;
+  margin: 10px;
+  float: right;
+  cursor: pointer;
+}
+#clear-page:hover{
+  scale: 1.01;
+}
+@media only screen and (max-width: 768px) {
+    .container1{
+        flex-wrap: wrap;
+        /* background-color: red; */
+    }
+    .left-container,.right-container{
+        box-shadow: 0 1px 2px 1px rgba(61, 61, 61, 0.1);
+        margin: 5px;
+        height: auto;
+        width: 100%;
+      }
+      .mbtn{
+        margin-right: 5px;
+      }
+     .inputs{
+      margin: 5px 0px;
+     }
+  }
