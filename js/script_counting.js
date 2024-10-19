@@ -27,10 +27,15 @@ const pauseButton = document.getElementById('pauseSort');
 const resetButton = document.getElementById('resetSort');
 const speedControl = document.getElementById('speed');
 const graphContainer = document.getElementById('visualization');
-var numbers = document.getElementById("nums-input");
-var selectAlgorithm = document.getElementById('select-algorithm');
-var clearPage  = document.getElementById('clear-page');
-// console.log(graphContainer);
+const numbers = document.getElementById("nums-input");
+const selectAlgorithm = document.getElementById('select-algorithm');
+const clearPage  = document.getElementById('clear-page');
+const randomArraySize = document.getElementById('size');
+const maxArraySize = document.getElementById('max-size');
+const minArraySize = document.getElementById('min-size');
+const generateRandomArrayBtn = document.getElementById('generate');
+
+
 // Initialize and display the array
 function displayArray(container, array, className = '') {
     container.innerHTML = '';
@@ -58,7 +63,7 @@ function log(message) {
 // Counting Sort algorithm with visualization
 async function countingSort() {
     const max = Math.max(...array);
-    const count = new Array(max + 1).fill(0);
+    const count = new Array(max+1).fill(0);
     const sortedArray = new Array(array.length).fill(0);
 
     // Display initial state
@@ -192,6 +197,21 @@ startButton.addEventListener('click', () => {
         countingSort();
     }
 });
+generateRandomArrayBtn.addEventListener('click',()=>{
+   
+    let n = Number(randomArraySize.value);
+    for (let i=0; i<n;i++) {
+        numbers.value +=(Math.floor((Math.random() * Number(maxArraySize.value)) + Number(minArraySize.value) )).toString();
+        if(i<n-1){
+            numbers.value+=',';
+        }
+    }
+    randomArraySize.value ='';
+    maxArraySize.value ='';
+    minArraySize.value ='';
+
+});
+
 clearPage.addEventListener('click',()=>{
     graphContainer.style.display = "none";
     numbers.value='';
