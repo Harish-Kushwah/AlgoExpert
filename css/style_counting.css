@@ -34,7 +34,7 @@
 }
 
 .array-container div.sorted {
-    background-color: #00ff66;
+    background-color: #0A991A;
 }
 
 /* #startSort, #pauseSort, #resetSort {
@@ -52,14 +52,16 @@
 } */
 
 .log-tracer {
-    /* border: 1px solid #ff0055; */
+    box-shadow: 0 0px 2px 1px rgba(61, 61, 61, 0.1);
     padding: 10px;
-    height: 150px;
+    height: 200px;
     width: 100%;
-    margin-top: 20px;
-    /* background-color: #3a3a3a; */
+    margin-top: 50px;
+    background-color: #f6f6f8;
     overflow-y: scroll;
     text-align: start;
+    border-radius: 2px;
+    padding: 10px;
 }
 
 /* .controls {

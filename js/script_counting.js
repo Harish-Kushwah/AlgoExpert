@@ -194,7 +194,10 @@ startButton.addEventListener('click', () => {
 
         isReset = false;
         resetVisualization(); // Reset before starting
-        countingSort();
+
+        if(selectAlgorithm.value=='count-sort'){
+            countingSort();
+        }
     }
 });
 generateRandomArrayBtn.addEventListener('click',()=>{
