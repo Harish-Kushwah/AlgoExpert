@@ -10,12 +10,20 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <!-- Prism.js CSS and JS (from CDN) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
+    />
+
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/style_counting.css">
+    <link rel="stylesheet" href="css/style_counting.css" />
+    <link rel="stylesheet" href="css/style_radix.css" />
     <link rel="stylesheet" href="css/playground.css" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script> <!-- Ensure jsPDF is loaded -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <!-- Ensure jsPDF is loaded -->
   </head>
   <body>
     <!-- <header class="header"> -->
@@ -37,7 +45,9 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/AlgoExpert/">Home</a>
+              <a class="nav-link active" aria-current="page" href="/AlgoExpert/"
+                >Home</a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/AlgoExpert/">Learn</a>
@@ -51,80 +61,141 @@
     </nav>
     <!-- </header> -->
     <section class="sub-header">
-        <p>Playground</p>
+      <p>Playground</p>
     </section>
 
     <section class="container1">
-        <section class="left-container">
-            <div class="input-container">
-                <input type="text" id="nums-input" class="inputs" placeholder="Enter Comma Separated Numbers">
-                <select class="inputs" id="select-algorithm">
-                  <option value="null">---Select Algorithm---</option>
-                  <option value="count-sort">Count Sort</option>
-                  <option value="bucket-sort">Bucket Sort</option>
-                  <option value="radix-sort">Radix Sort</option>
-                </select>
-                <div class="btns"  class="inputs btns">
-                  <button id="startSort" class="mbtn start">Start</button>
-                  <button id="resetSort" class="mbtn reset">Reset</button>
-                  <button id="pauseSort" class="mbtn pause">Pause</button>
-                </div>
+      <section class="left-container">
+        <div class="input-container">
+          <input
+            type="text"
+            id="nums-input"
+            class="inputs"
+            placeholder="Enter Comma Separated Numbers"
+          />
+          <select class="inputs" id="select-algorithm">
+            <option value="null">---Select Algorithm---</option>
+            <option value="count-sort">Count Sort</option>
+            <option value="bucket-sort">Bucket Sort</option>
+            <option value="radix-sort">Radix Sort</option>
+          </select>
+          <div class="btns" class="inputs btns">
+            <button id="startSort" class="mbtn start">Start</button>
+            <button id="resetSort" class="mbtn reset">Reset</button>
+            <button id="pauseSort" class="mbtn pause">Pause</button>
+          </div>
+        </div>
+        <div class="controls-container">
+          <div class="inp-group">
+            <label for="">Speed</label>
+            <input
+              type="range"
+              id="speed"
+              class="inputs range"
+              name="speed"
+              min="50"
+              max="1000"
+              value="500"
+            />
+          </div>
+          <div class="inp-group">
+            <label for="">Fill Random Numbers</label>
+            <div class="group">
+              <input
+                type="text"
+                class="inputs"
+                name="random-no-range"
+                id="size"
+                placeholder="Enter Size"
+              />
+              <input
+                type="text"
+                class="inputs"
+                name="random-no-range"
+                id="min-size"
+                placeholder="Enter min"
+              />
+              <input
+                type="text"
+                class="inputs"
+                name="random-no-range"
+                id="max-size"
+                placeholder="Enter max"
+              />
             </div>
-            <div class="controls-container">
-              <div class="inp-group">
-                <label for="">Speed</label>
-                <input type="range" id="speed" class="inputs range" name="speed" min="50" max="1000" value="500">
-              </div>
-              <div class="inp-group">
-                <label for="">Fill Random Numbers</label>
-                <div class="group">
-                <input type="text" class="inputs" name="random-no-range" id="size" placeholder="Enter Size">
-                <input type="text" class="inputs" name="random-no-range" id="min-size" placeholder="Enter min">
-                <input type="text" class="inputs" name="random-no-range" id="max-size" placeholder="Enter max">
-                </div>
-                <button class="mbtn reset generate" id="generate">Generate</button>
-              </div>
+            <button class="mbtn reset generate" id="generate">Generate</button>
+          </div>
 
-              <div class="inp-group">
-                <label for="">Select Visualization Mode</label>
-                <select type="text" class="inputs">
-                  <option value="null">---Select Algorithm---</option>
-                  <option value="bar">Bar</option>
-                  <option value="array">Array</option>
-                </select>
-                <button class="mbtn reset generate">Apply</button>
+          <div class="inp-group">
+            <label for="">Select Visualization Mode</label>
+            <select type="text" class="inputs">
+              <option value="null">---Select Algorithm---</option>
+              <option value="bar">Bar</option>
+              <option value="array">Array</option>
+            </select>
+            <button class="mbtn reset generate">Apply</button>
+          </div>
+        </div>
+      </section>
+      <section class="right-container">
+        <img src="./asets/change1.png" alt="" id="clear-page" />
 
+        <div class="graph-container">
+          <div class="container2" id="visualization">
+            <div class="field">
+            <p class="label">Array</p>
+            <div id="array-container" class="array-container"></div>
+            </div>
+            <p class="label">Counts/Buckets</p>
+            <div id="count-container" class="array-container"></div>
+
+            <p class="label">Sorted Array</p>
+            <div id="sorted-array-container" class="array-container"></div>
+
+            <div class="log-tracer-container">
+            <p class="label">Log Tracer</p>
+            <div id="log-tracer" class="log-tracer"></div>
+            </div>
+        
+          
+            <p class="label">Implementation</p>
+          <div class="code-container">
+            <div class="language-section">
+              <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg"
+                alt="C"
+                class="language-icon"
+                 id="c-btn"
+              />
+              <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg"
+                alt="C++"
+                class="language-icon"
+                 id="cpp-btn"
+              />
+              <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg"
+                alt="Java"
+                class="language-icon"
+                 id="java-btn"
+              />
+              <img
+                src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"
+                alt="Python"
+                id="python-btn"
+                class="language-icon"
+              />
+              <div class="copy-btn" onclick="copyCode(this)">
               </div>
             </div>
-        </section>
-        <section class="right-container">
-          <img src="./asets/change.png" alt="" id="clear-page">
+            <div class="code-section">
 
-           <div class="graph-container">
-            <div class="container2" id="visualization">
-              <p>Array</p>
-              <div id="array-container" class="array-container"></div>
-      
-              <p>Counts/Buckets</p>
-              <div id="count-container" class="array-container"></div>
-      
-              <p>Sorted Array</p>
-              <div id="sorted-array-container" class="array-container"></div>
-      
-              <p>Log Tracer</p>
-              <div id="log-tracer" class="log-tracer"></div>
             </div>
-           <!-- <div class="code-container">
+          </div>
+    </div>
 
-          </div> -->
-
-           </div>
-           
-        </section>
+      </section>
     </section>
-
-
-
 
     <footer class="footer">
       <div class="footer-content">
@@ -152,6 +223,11 @@
     <script src="js/playground.js"></script>
     <script src="js/script.js"></script>
     <script src="js/script_counting.js"></script>
+    <script src="js/code.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
 
     <!-- Bootstrap Links  -->
     <script
