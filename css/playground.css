@@ -44,6 +44,7 @@
 .right-container{
     width: 69%;
     margin-left: 10px;
+    box-shadow: 0;
 }
 .input-container,.controls-container{
   box-shadow: 0 1px 2px 1px rgba(61, 61, 61, 0.1);
@@ -110,19 +111,33 @@
 .label{
   font-weight: 500;
 }
-#clear-page{
-  width: 30px;
-  height: 30px;
-  margin: 10px;
-  float: right;
-  cursor: pointer;
-  border-radius: 50%;
-  
-}
-#clear-page:hover{
-  scale: 1.1;
+.icon{
+  width: 35px;
+  height: 35px;
+  margin: 5px;
+  border-radius: 50%; 
   box-shadow: 0 1px 2px 1px rgba(61, 61, 61, 0.1);
+  padding: 2px;
+  cursor: pointer;
+
+
+}
+.icon:hover{
+  scale: 1.1;
   transition-duration: 0.5s;
+  box-shadow: 0 1px 3px 1px rgba(128, 29, 214, 0.1);
+
+}
+#clear-page{
+  float: left;
+}
+.right-container-header{
+  /* box-shadow: 0 1px 2px 1px rgba(61, 61, 61, 0.1); */
+ /* background-color: #FF295E; */
+ width: 100%;
+ height: 50px;
+ display: flex;
+ justify-content: flex-end;
 
 }
 
@@ -133,6 +148,7 @@
 }
 .language-section{
   box-shadow: 0 1px 2px 1px rgba(61, 61, 61, 0.1);
+
   padding: 10px;
 }
 .language-icon{

@@ -360,6 +360,7 @@ startButton.addEventListener('click', () => {
             bucketSort();
         }
         initCodeSection();
+        paintChart(originalArray);
     }
 });
 generateRandomArrayBtn.addEventListener('click',()=>{
