@@ -770,7 +770,6 @@ function addPythonCode(array){
     }
 
     pre.appendChild(code);
-    console.log(pre);
     codeSection.innerHTML='';
     codeSection.append(pre);
     Prism.highlightElement(code);
@@ -792,7 +791,7 @@ function addCCode(array){
 
     }
     pre.appendChild(code);
-    console.log(pre)
+    
     codeSection.innerHTML='';
 
     codeSection.append(pre);
@@ -815,7 +814,7 @@ function addCppCode(array){
     }
 
     pre.appendChild(code);
-    console.log(pre)
+    ""(pre)
     codeSection.innerHTML='';
 
     codeSection.append(pre);
@@ -838,7 +837,7 @@ function addJavaCode(array){
     }
 
     pre.appendChild(code);
-    console.log(pre)
+    ""(pre)
     codeSection.innerHTML='';
 
     codeSection.append(pre);

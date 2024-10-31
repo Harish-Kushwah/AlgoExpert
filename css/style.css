@@ -282,11 +282,12 @@ nav {
   padding: 15px 15px;
   border-bottom: 4px solid #280261;
   max-width: 400px;
+  cursor: pointer;
+
 }
 .about-card:hover{
   scale: 1.01;
   transition-duration: 0.5s;
-  cursor: pointer;
 } 
 .card-title {
   color: #7b2bf4;

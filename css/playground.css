@@ -203,10 +203,13 @@
 }
 .deactivate-icon{
   opacity: 0.5;
-  pointer-events: none
+  pointer-events: none;
 }
 .deactivate-icon:hover{
   scale: 1;
+}
+.deactivate-btn{
+  cursor:not-allowed;
 }
 @media only screen and (max-width: 768px) {
     .container1{
