@@ -29,7 +29,7 @@
     <!-- <header class="header"> -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
       <div class="container-fluid">
-        <h1 class="logo">Algo<span class="highlight">Expert</span></h1>
+       <h1 class="logo">Algo<span class="highlight">Expert</span></h1>
         <button
           class="navbar-toggler"
           type="button"
@@ -63,6 +63,7 @@
     <section class="sub-header">
       <p>Playground</p>
       <div class="right-container-header">
+        <img src="./asets/download1.png" alt="" id="download-page"  class="icon "/>
         <img src="./asets/ide.png" alt="" id="ide-page"  class="icon"/>
         <img src="./asets/change1.png" alt="" id="clear-page" class="icon"/>
       </div>
@@ -82,6 +83,7 @@
             <option value="count-sort">Count Sort</option>
             <option value="bucket-sort">Bucket Sort</option>
             <option value="radix-sort">Radix Sort</option>
+           
           </select>
           <div class="btns" class="inputs btns">
             <button id="startSort" class="mbtn start">Start</button>
@@ -91,7 +93,7 @@
         </div>
         <div class="controls-container">
           <div class="inp-group">
-            <label for="">Speed</label>
+            <label for="speed" >Speed</label>
             <input
               type="range"
               id="speed"
@@ -103,7 +105,7 @@
             />
           </div>
           <div class="inp-group">
-            <label for="">Fill Random Numbers</label>
+            <label for="size">Fill Random Numbers</label>
             <div class="group">
               <input
                 type="text"
@@ -149,7 +151,7 @@
             <div class="field">
             <p class="label">Array</p>
             <div id="array-container" class="array-container"></div>
-            </div>
+           
             <p class="label">Counts/Buckets</p>
             <div id="count-container" class="array-container"></div>
 
@@ -161,7 +163,7 @@
             <p class="label">Log Tracer</p>
             <div id="log-tracer" class="log-tracer"></div>
           <!-- </div> -->
-
+        </div>
         
           
             <p class="label">Implementation</p>
@@ -193,6 +195,7 @@
               />
               <div class="copy-btn" onclick="copyCode(this)">
               </div>
+             
             </div>
             <div class="code-section">
 
@@ -239,7 +242,7 @@
     <script src="js/code.js" defer></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/chart.js"></script>
+    <!-- <script src="js/chart.js"></script> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>

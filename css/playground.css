@@ -148,8 +148,9 @@
 }
 .language-section{
   box-shadow: 0 1px 2px 1px rgba(61, 61, 61, 0.1);
-
   padding: 10px;
+  display: flex;
+  align-items: center;
 }
 .language-icon{
   height: 30px;
@@ -178,14 +179,15 @@
 }
 .copy-btn{
   cursor: pointer;
-  float: right;
   background-image: url('../asets/copy.png');
   height: 20px;
   width: 20px;
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; 
-  
+  margin-left: auto;
+
 }
+
 .language-icon:hover{
   scale: 1.1;
   transition-duration: 0.5s;
@@ -199,7 +201,13 @@
 .active-copy-icon{
   background-image: url('../asets/copied.png');
 }
-
+.deactivate-icon{
+  opacity: 0.5;
+  pointer-events: none
+}
+.deactivate-icon:hover{
+  scale: 1;
+}
 @media only screen and (max-width: 768px) {
     .container1{
         flex-wrap: wrap;

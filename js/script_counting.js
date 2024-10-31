@@ -4,19 +4,12 @@ let speed = 500; // Default speed
 let isPaused = false;
 let isReset = false;
 let isSorted = false;
+let isDownloadPdfMsgVisibleInLog = false;
 
 const { jsPDF } = window.jspdf; // Correctly access jsPDF
 
 const snapshots = []; // Array to store image snapshots
 let pdfDoc;
-
-
-// document.getElementById('downloadPDF').addEventListener('click', function () {
-//     if(isSorted){
-//         generatePDF();
-//     } // Call your sorting function
-// });
-
 
 const arrayContainer = document.getElementById('array-container');
 const countContainer = document.getElementById('count-container');
@@ -34,6 +27,8 @@ const randomArraySize = document.getElementById('size');
 const maxArraySize = document.getElementById('max-size');
 const minArraySize = document.getElementById('min-size');
 const generateRandomArrayBtn = document.getElementById('generate');
+const downloadBtn = document.getElementById('download-page');
+
 
 
 // Initialize and display the array
@@ -85,7 +80,7 @@ async function countingSort() {
         arrayContainer.children[i].classList.add('active');
         countContainer.children[currentElement].classList.add('active');
         countContainer.children[currentElement].textContent = count[currentElement];
-        // await captureSnapshot();
+        await captureSnapshot();
         await sleep(speed);
 
         arrayContainer.children[i].classList.remove('active');
@@ -100,15 +95,15 @@ async function countingSort() {
         countContainer.children[i].classList.add('active');
         countContainer.children[i - 1].classList.add('active');
         count[i] += count[i - 1];
-        // await captureSnapshot();
 
+        await captureSnapshot();
         await sleep(speed);
         log(`Accumulating: count[${i}] = ${count[i]}`);
         countContainer.children[i].textContent = count[i];
         countContainer.children[i].classList.remove('active');
         countContainer.children[i - 1].classList.remove('active');
 
-        // await captureSnapshot();
+        await captureSnapshot();
         await sleep(speed);
     }
 
@@ -119,7 +114,7 @@ async function countingSort() {
 
         const currentElement = array[i];
         arrayContainer.children[i].classList.add('active');
-        // await captureSnapshot();
+        await captureSnapshot();
         await sleep(speed);
         const sortedIndex = count[currentElement] - 1;
         sortedArray[sortedIndex] = currentElement;
@@ -131,13 +126,13 @@ async function countingSort() {
         countContainer.children[currentElement].textContent = count[currentElement];
         sortedArrayContainer.children[sortedIndex].textContent = currentElement;
         sortedArrayContainer.children[sortedIndex].classList.add('sorted');
-        // await captureSnapshot();
+         await captureSnapshot();
         await sleep(speed);
     }
 
     // Display sorted array at the end
     displayArray(sortedArrayContainer, sortedArray, 'sorted');
-    // await captureSnapshot();
+    await captureSnapshot();
     isSorted = true;
     log('Sorting Complete');
 
@@ -168,7 +163,6 @@ function displaySortedArrayRadix(array, highlightIndex = -1) {
         sortedArrayContainer.appendChild(div);
     });
 }
-
 // Function to display the digit buckets during sorting
 function displayDigitBuckets(buckets,digit) {
     countContainer.innerHTML = `Based on ${digit} place value`;
@@ -179,6 +173,19 @@ function displayDigitBuckets(buckets,digit) {
         const div = document.createElement('div');
         div.classList.add('bucket');
         div.textContent = `${idx} => [${bucket.join(', ')}]`; // Format: "0 => [array]"
+        countContainer.appendChild(div);
+    });
+}
+// Function to display the digit buckets during sorting
+function displayDigitBucketsForBucketSort(buckets,digit,bucketInfo) {
+    countContainer.innerHTML = '';
+    countContainer.classList.add('tracer');
+    countContainer.classList.add('radix-bucket-container');
+    countContainer.classList.remove('array-container');
+    buckets.forEach((bucket, idx) => {
+        const div = document.createElement('div');
+        div.classList.add('bucket');
+        div.textContent = `${idx+1} (${bucketInfo[idx][0]}->${bucketInfo[idx][1]}) => [${bucket.join(', ')}]`; // Format: "0 => [array]"
         countContainer.appendChild(div);
     });
 }
@@ -203,6 +210,8 @@ async function radixSort() {
             log(`Placing ${array[i]} into bucket ${digitValue} based on digit ${digit}`);
             displayArrayRadix(array, i);
             displayDigitBuckets(buckets,digit); // Show current buckets for the digit
+           
+            await captureSnapshot();
             await sleep(speed);
         }
         displayArrayRadix(array);
@@ -213,7 +222,7 @@ async function radixSort() {
         for (let i = 0; i < array.length; i++) {
             if (isPaused) await handlePause();
             if (isReset) return;
-
+          
             let digitValue = Math.floor(array[i] / Math.pow(10, digit)) % 10;
             buckets[digitValue].pop(array[i]);
             log(`Placing  ${array[i]} from bucket ${digitValue} based on digit ${digit}`);
@@ -221,71 +230,94 @@ async function radixSort() {
             sortedArrayContainer.children[i].classList.add('sorted');
 
             displayDigitBuckets(buckets,digit); // Show current buckets for the digit
+           
+            await captureSnapshot();
             await sleep(speed);
         }
 
-        // isSorted = true;
+      
         displaySortedArrayRadix(array);
         log(`After sorting by digit ${digit}, array is: ${array}`);
-        // displaySortedArrayRadix(array);
-        // await sleep(speed);
+
         if (isPaused) await handlePause();
         if (isReset) return;
+
+        await captureSnapshot();
     }
+    isSorted = true;
     log('Sorting Complete');
 }
-async function bucketSort() {
-    maxDigit = Math.max(...array).toString().length;
-    for (let digit = 0; digit < maxDigit; digit++) {
-        
+async function bucketSort(){
+    
+    let len = array.length;
+    let maxElement = Math.max(...array);
+    let minElement = Math.min(...array);
+
+    let k = Math.floor(Math.sqrt(len));
+    let range = (maxElement-minElement + 1)/k;
+
+    let buckets = Array.from({length:k},()=>[]);
+
+    let bucketInfo =[]
+    for(let i =0; i<k; i++){
+        let start = minElement + i*range;
+        let end = start + range - 1;
+        bucketInfo.push([Math.floor(start),Math.floor(end)]);
+        // console.log(`${i} th bucket will store values from ${} to ${Math.floor(end)}`);
+    }
+    for(let i=0;i<len;i++){
         if (isPaused) await handlePause();
         if (isReset) return;
 
-        const numBuckets = Math.ceil(Math.sqrt(array.length)); // Optimal number of buckets
-        let buckets = Array.from({ length: numBuckets }, () => []);
+        let bucketIndex = Math.floor((array[i] - minElement)/range);
+        buckets[bucketIndex].push(array[i]);
+        log(`Placing ${array[i]} into bucket ${bucketIndex+1} from unsorted array`);
+        displayArrayRadix(array, i);
+        displayDigitBucketsForBucketSort(buckets,i,bucketInfo); // Show current buckets for the digit
+        await captureSnapshot();
+        await sleep(speed);
 
-        // Place array elements into corresponding buckets
-        for (let i = 0; i < array.length; i++) {
+
+    }
+    displayArrayRadix(array);
+
+
+    for(let i=0;i<k;i++){
+        log(`Sorting ${i} th bucket`);
+
+        buckets[i].sort((a,b)=>a-b);
+
+        displayDigitBucketsForBucketSort(buckets,i,bucketInfo); // Show current buckets for the digit
+        await captureSnapshot();
+        await sleep(speed);
+    }
+
+    let index = 0;
+    for(let i=0;i<k;i++){
+        for(let j =0;j<buckets[i].length;j++){
+            array[index] = buckets[i][j];
+
             if (isPaused) await handlePause();
             if (isReset) return;
 
-            let digitValue = Math.floor(array[i] / Math.pow(10, digit)) % 10;
-            buckets[digitValue].push(array[i]);
-            log(`Placing ${array[i]} into bucket ${digitValue} based on digit ${digit}`);
-            displayArrayRadix(array, i);
-            displayDigitBuckets(buckets,digit); // Show current buckets for the digit
+            log(`Placing  ${buckets[i][j]} into sorted array from ${i} th bucket`);
+            sortedArrayContainer.children[index].textContent = array[index];
+            sortedArrayContainer.children[index].classList.add('sorted');
+
+            displayDigitBucketsForBucketSort(buckets,i,bucketInfo); // Show current buckets for the digit
+            await captureSnapshot();
             await sleep(speed);
+            index++;
         }
-        displayArrayRadix(array);
-
-        // Place values from buckets to array
-         // Rebuild the array from the buckets
-        array = [].concat(...buckets);
-        for (let i = 0; i < array.length; i++) {
-            if (isPaused) await handlePause();
-            if (isReset) return;
-
-            let digitValue = Math.floor(array[i] / Math.pow(10, digit)) % 10;
-            buckets[digitValue].pop(array[i]);
-            log(`Placing  ${array[i]} from bucket ${digitValue} based on digit ${digit}`);
-            sortedArrayContainer.children[i].textContent = array[i];
-            sortedArrayContainer.children[i].classList.add('sorted');
-
-            displayDigitBuckets(buckets,digit); // Show current buckets for the digit
-            await sleep(speed);
-        }
-
-        // isSorted = true;
-        displaySortedArrayRadix(array);
-        log(`After sorting by digit ${digit}, array is: ${array}`);
-        // displaySortedArrayRadix(array);
-        // await sleep(speed);
-        if (isPaused) await handlePause();
-        if (isReset) return;
     }
+    displaySortedArrayRadix(array);
+    if (isPaused) await handlePause();
+    if (isReset) return;
+    await captureSnapshot();
+
+    isSorted = true;
     log('Sorting Complete');
 }
-
 
 // Event listener to handle pause
 pauseButton.addEventListener('click', () => {
@@ -315,16 +347,29 @@ speedControl.addEventListener('input', (event) => {
 
 // Reset visualization to original state
 function resetVisualization() {
+
+    // remove the previous snapshots
+    while(snapshots.length){
+        snapshots.pop();
+    }
+    
     array = [...originalArray];
     if(selectAlgorithm.value=='count-sort'){
         displayArray(arrayContainer, array);
         displayArray(countContainer, new Array(10).fill(0)); // Reset count container
         displayArray(sortedArrayContainer, new Array(array.length).fill('')); // Clear sorted array
     }
-    else{
+    else if(selectAlgorithm.value=='radix-sort'){
         displayArray(arrayContainer, array);
         displayDigitBuckets(Array.from({ length: 10 }, () => []),0)
         displaySortedArrayRadix(Array.from({ length: array.length }, () => []));
+    }
+    else{
+        displayArray(arrayContainer, array);
+        const numBuckets = Math.ceil(Math.sqrt(array.length)); // Optimal number of buckets
+        displayDigitBuckets(Array.from({ length: numBuckets }, () => []));
+        displaySortedArrayRadix(Array.from({ length: array.length }, () => []));
+
     }
     logTracer.innerHTML = ''; // Clear logs
 }
@@ -348,6 +393,8 @@ startButton.addEventListener('click', () => {
 
 
         isReset = false;
+        isSorted = false;
+        isDownloadPdfMsgVisibleInLog = false;
         resetVisualization(); // Reset before starting
 
         if(selectAlgorithm.value=='count-sort'){
@@ -360,7 +407,8 @@ startButton.addEventListener('click', () => {
             bucketSort();
         }
         initCodeSection();
-        paintChart(originalArray);
+      
+        // paintChart(originalArray);
     }
 });
 generateRandomArrayBtn.addEventListener('click',()=>{
@@ -386,10 +434,12 @@ clearPage.addEventListener('click',()=>{
 })
 
 async function captureSnapshot() {
-    const element = document.getElementById('visualization');
-    const canvas = await html2canvas(element);
-    const imgData = canvas.toDataURL('image/png');
-    snapshots.push(imgData); // Store the image data
+    if(array.length<11){
+        const element = document.querySelector('.field');
+        const canvas = await html2canvas(element);
+        const imgData = canvas.toDataURL('image/png');
+        snapshots.push(imgData); // Store the image data
+    }
 }
 
 async function generatePDF() {
@@ -401,4 +451,27 @@ async function generatePDF() {
         pdfDoc.addImage(snapshots[i], 'PNG', 10, 10, 180, 160); // Adjust dimensions
     }
     pdfDoc.save('Algorithm_Visualization.pdf'); // Save the PDF
+    
 }
+setInterval(()=>{
+    if(!isSorted || array.length>10){
+        downloadBtn.classList.add('deactivate-icon');
+    }
+    else{
+        downloadBtn.classList.remove('deactivate-icon');
+        if(!isDownloadPdfMsgVisibleInLog){
+            log(`Visualization PDF is ready for download`);
+            isDownloadPdfMsgVisibleInLog = true;
+        }
+    }
+},2000);
+
+downloadBtn.addEventListener('click', function () {
+    if(isSorted){
+        generatePDF();
+    }
+    else{
+        alert('Sorting Is not completed');
+    } // Call your sorting function
+    // alert("download pdf")
+});
