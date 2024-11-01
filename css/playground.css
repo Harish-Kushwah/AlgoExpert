@@ -211,6 +211,25 @@
 .deactivate-btn{
   cursor:not-allowed;
 }
+.filters{
+  display: grid;
+  grid-template-columns: auto auto;
+  margin: 10px 0px ;
+}
+.filters input{
+  width: 15px;
+  height: 15px;
+  margin-right: 3px;
+  cursor: pointer;
+  border-radius: 2px solid #7B2BF4;
+}
+.filters-choice{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 5px;
+
+}
 @media only screen and (max-width: 768px) {
     .container1{
         flex-wrap: wrap;

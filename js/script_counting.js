@@ -28,7 +28,7 @@ const maxArraySize = document.getElementById('max-size');
 const minArraySize = document.getElementById('min-size');
 const generateRandomArrayBtn = document.getElementById('generate');
 const downloadBtn = document.getElementById('download-page');
-
+// const generateNumberFilterSelectedValue = document.querySelector('input[name="filter"]:checked').value;
 
 
 // Initialize and display the array
@@ -455,17 +455,44 @@ startButton.addEventListener('click', () => {
     startVisualization();
 });
 generateRandomArrayBtn.addEventListener('click', () => {
-    numbers.value = '';
+    let randomArray  = [];
     let n = Number(randomArraySize.value);
     for (let i = 0; i < n; i++) {
-        numbers.value += (Math.floor((Math.random() * Number(maxArraySize.value)) + Number(minArraySize.value))).toString();
+        randomArray.push(Math.floor((Math.random() *
+                         Number(maxArraySize.value)) + 
+                         Number(minArraySize.value)));
+    }
+  
+
+    if (document.getElementById('nearly-sorted').checked) {
+        let count = n/2;
+        randomArray.sort((a,b)=>{
+           if(a-b<0 && count!=0){
+             count--;
+             return a-b;
+           }
+        })
+    }
+    else  if (document.getElementById('increasing').checked) {
+        randomArray.sort((a,b)=>a-b);
+    }
+    else  if (document.getElementById('decreasing').checked) {
+        randomArray.sort((a,b)=>b-a);
+
+    }
+
+    numbers.value = '';
+    for (let i = 0; i < n; i++) {
+        numbers.value += randomArray[i].toString();
         if (i < n - 1) {
             numbers.value += ',';
         }
     }
-    randomArraySize.value = '';
-    maxArraySize.value = '';
-    minArraySize.value = '';
+
+    // randomArraySize.value = '';
+    // maxArraySize.value = '';
+    // minArraySize.value = '';
+
 
 });
 
@@ -474,6 +501,7 @@ clearPage.addEventListener('click', () => {
     graphContainer.style.display = "none";
     numbers.value = '';
     selectAlgorithm.value = 'null'
+    activateStartBtn();
 
 })
 

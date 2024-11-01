@@ -814,7 +814,6 @@ function addCppCode(array){
     }
 
     pre.appendChild(code);
-    ""(pre)
     codeSection.innerHTML='';
 
     codeSection.append(pre);
@@ -837,7 +836,6 @@ function addJavaCode(array){
     }
 
     pre.appendChild(code);
-    ""(pre)
     codeSection.innerHTML='';
 
     codeSection.append(pre);
