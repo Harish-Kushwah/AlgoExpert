@@ -45,28 +45,25 @@
   text-align: start;
   border-radius: 2px;
   padding: 10px;
- 
-
 }
 
 .chart-container {
-    width: 100%;
-  }
-
-.log-tracer-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 10px;
+  width: 100%;
 }
 
+.log-tracer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+}
 
 @media only screen and (max-width: 768px) {
-    .log-tracer-container {
-        flex-direction: column;
-    }
-    .log-tracer,.chart-container {
-        width: 100%;
-    }
-    
+  .log-tracer-container {
+    flex-direction: column;
+  }
+  .log-tracer,
+  .chart-container {
+    width: 100%;
+  }
 }

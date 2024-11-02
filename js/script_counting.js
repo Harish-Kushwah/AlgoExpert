@@ -48,13 +48,13 @@ function displayArray(container, array, className = '') {
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-function deactivateStartBtn(){
+function deactivateStartBtn() {
     startButton.classList.add('deactivate-btn');
-    startButton.disabled= true;
+    startButton.disabled = true;
 }
-function activateStartBtn(){
+function activateStartBtn() {
     startButton.classList.remove('deactivate-btn');
-    startButton.disabled= false;
+    startButton.disabled = false;
 }
 
 // Log the steps in Log Tracer
@@ -281,7 +281,7 @@ function getBucket(array) {
         buckets: buckets,
         bucketInfo: bucketInfo,
         range: range,
-        bucketSize:k,
+        bucketSize: k,
     };
 }
 async function bucketSort() {
@@ -289,7 +289,7 @@ async function bucketSort() {
 
     let len = array.length;
     let minElement = Math.min(...array);
-   
+
     let bucket = getBucket(array);
     let buckets = bucket.buckets;
     let bucketInfo = bucket.bucketInfo;
@@ -297,31 +297,31 @@ async function bucketSort() {
 
     for (let i = 0; i < len; i++) {
         if (isPaused) await handlePause();
-        if (isReset){
+        if (isReset) {
             console.log('reset the bucket sort')
             return;
         }
 
         let bucketIndex = Math.floor((array[i] - minElement) / bucket.range);
         bucket.buckets[bucketIndex].push(array[i]);
-       
+
         log(`Placing ${array[i]} into bucket ${bucketIndex + 1} from unsorted array`);
-       
+
         displayArrayRadix(array, i);
         displayDigitBucketsForBucketSort(buckets, bucketInfo) // Show current buckets for the digit
-       
+
         await captureSnapshot();
         await sleep(speed);
     }
     displayArrayRadix(array);
-  
-    
+
+
     for (let i = 0; i < k; i++) {
-        log(`Sorting ${i+1} th bucket`);
+        log(`Sorting ${i + 1} th bucket`);
         bucket.buckets[i].sort((a, b) => a - b);
-      
+
         displayDigitBucketsForBucketSort(buckets, bucketInfo) // Show current buckets for the digit
-      
+
         await captureSnapshot();
         await sleep(speed);
     }
@@ -414,7 +414,7 @@ function resetVisualization() {
     }
     logTracer.innerHTML = ''; // Clear logs
 }
-function startVisualization(){
+function startVisualization() {
     if (numbers.value.length == 0) {
         alert("Enter Numbers");
     }
@@ -428,7 +428,7 @@ function startVisualization(){
             array.push(Number(x));
         }
         originalArray = [...array]
-      
+
         resetVisualization(); // Reset before starting
         isReset = false;
         isSorted = false;
@@ -455,29 +455,29 @@ startButton.addEventListener('click', () => {
     startVisualization();
 });
 generateRandomArrayBtn.addEventListener('click', () => {
-    let randomArray  = [];
+    let randomArray = [];
     let n = Number(randomArraySize.value);
     for (let i = 0; i < n; i++) {
         randomArray.push(Math.floor((Math.random() *
-                         Number(maxArraySize.value)) + 
-                         Number(minArraySize.value)));
+            Number(maxArraySize.value)) +
+            Number(minArraySize.value)));
     }
-  
+
 
     if (document.getElementById('nearly-sorted').checked) {
-        let count = n/2;
-        randomArray.sort((a,b)=>{
-           if(a-b<0 && count!=0){
-             count--;
-             return a-b;
-           }
+        let count = n / 2;
+        randomArray.sort((a, b) => {
+            if (a - b < 0 && count != 0) {
+                count--;
+                return a - b;
+            }
         })
     }
-    else  if (document.getElementById('increasing').checked) {
-        randomArray.sort((a,b)=>a-b);
+    else if (document.getElementById('increasing').checked) {
+        randomArray.sort((a, b) => a - b);
     }
-    else  if (document.getElementById('decreasing').checked) {
-        randomArray.sort((a,b)=>b-a);
+    else if (document.getElementById('decreasing').checked) {
+        randomArray.sort((a, b) => b - a);
 
     }
 

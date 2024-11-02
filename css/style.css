@@ -7,7 +7,7 @@
   padding: 0px;
   font-family: "Montserrat", sans-serif;
 }
-p{
+p {
   margin: 0px !important;
 }
 a {
@@ -23,7 +23,7 @@ nav {
   color: #212121;
   justify-content: space-between;
   padding: 10px !important;
-  background-color: #FFFFFF !important;
+  background-color: #ffffff !important;
 }
 .logo {
   font-size: 31px;
@@ -38,7 +38,7 @@ nav {
 .nav-item a {
   text-decoration: none;
   color: #212121;
-  border-bottom: 2px solid #FFFFFF;
+  border-bottom: 2px solid #ffffff;
   margin-right: 10px;
 }
 .nav-item a:hover {
@@ -100,12 +100,11 @@ nav {
   padding: 18px 30px;
   font-weight: 0px;
   border: 0.5px solid var(--main);
-
 }
-.cta-button:hover{
-  background-color: #FFFFFF;
+.cta-button:hover {
+  background-color: #ffffff;
   color: var(--main);
-  transition-duration:0.5s;
+  transition-duration: 0.5s;
 }
 .hero-image {
   aspect-ratio: 1.43;
@@ -283,12 +282,11 @@ nav {
   border-bottom: 4px solid #280261;
   max-width: 400px;
   cursor: pointer;
-
 }
-.about-card:hover{
+.about-card:hover {
   scale: 1.01;
   transition-duration: 0.5s;
-} 
+}
 .card-title {
   color: #7b2bf4;
   font-size: 25px;
@@ -316,7 +314,7 @@ nav {
   border-radius: 8px;
   margin-top: 71px;
 }
-strong{
+strong {
   font-weight: 600;
 }
 @media only screen and (max-width: 768px) {
@@ -324,7 +322,7 @@ strong{
     display: flex;
     flex-wrap: wrap;
   }
-  .about-card{
+  .about-card {
     min-width: 350px;
   }
 }
@@ -332,7 +330,7 @@ strong{
 /* about ends */
 
 .footer {
-  background-color: #34027F;
+  background-color: #34027f;
   align-self: stretch;
   display: flex;
   margin-top: 93px;
@@ -351,7 +349,7 @@ strong{
   font-weight: 600;
 }
 .footer-logo {
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 25px;
   align-self: start;
 }
@@ -365,7 +363,6 @@ strong{
   align-items: start;
   gap: 16px;
   margin: auto 0;
-
 }
 .social-icon {
   aspect-ratio: 1;
@@ -375,16 +372,14 @@ strong{
   height: 40px;
   border-radius: 50%;
 }
-.insta{
-    width: 45px;
-    height: 45px;
+.insta {
+  width: 45px;
+  height: 45px;
 }
 
 @media only screen and (max-width: 768px) {
-    .footer {
-        max-width: 100%;
-        margin-top: 40px;
-       
-      }
-    
+  .footer {
+    max-width: 100%;
+    margin-top: 40px;
+  }
 }
