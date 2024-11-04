@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="css/style_counting.css" />
     <link rel="stylesheet" href="css/style_radix.css" />
     <link rel="stylesheet" href="css/playground.css" />
+    <link rel="stylesheet" href="css/history.css" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
@@ -61,10 +62,14 @@
       <p>Playground</p>
       <div class="right-container-header">
         <img src="./asets/download1.png" alt="" id="download-page"  class="icon "/>
+        <img src="./asets/history1.png" alt="" id="history-page" class="icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"/>
         <img src="./asets/ide.png" alt="" id="ide-page"  class="icon"/>
         <img src="./asets/change1.png" alt="" id="clear-page" class="icon"/>
       </div>
     </section>
+
+
+
 
     <section class="container1">
       <section class="left-container">
@@ -218,6 +223,18 @@
     </section>
     </section>
 
+
+    <!-- History Section -->
+    <div class="offcanvas offcanvas-end"  tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">History</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body" id="history-container">
+      </div>
+    </div>
+
+
     <footer class="footer">
       <div class="footer-content">
         <h2 class="footer-logo"><span class="highlight">Algo</span>Expert</h2>
@@ -247,6 +264,8 @@
     <script src="js/script.js"></script>
     <script src="js/script_counting.js"></script>
     <script src="js/code.js" defer></script>
+    <script src="js/historyData.js" defer></script>
+    <script src="js/history.js" defer></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- <script src="js/chart.js"></script> -->
