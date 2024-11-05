@@ -338,9 +338,7 @@ strong {
   gap: 20px;
   flex-wrap: wrap;
   justify-content: space-between;
-  /* padding: 15px 0px 0px 0px; */
   padding: 10px 20px;
-  padding-bottom: 0px;
 }
 .footer-content {
   display: flex;

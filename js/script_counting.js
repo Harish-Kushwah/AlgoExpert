@@ -584,3 +584,15 @@ downloadBtn.addEventListener('click', function () {
         alert('Sorting Is not completed');
     } // Call your sorting function
 });
+
+function loadHistoryData(id){
+    if(localStorage.getItem("history") != undefined){
+        let allHistory = JSON.parse(localStorage.getItem("history"));
+        allHistory = allHistory.filter((history)=>{
+            return history.id === id;
+        })
+        numbers.value = allHistory[0].numbers
+        selectAlgorithm.value = allHistory[0].algorithm;
+    }
+
+}

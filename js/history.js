@@ -1,5 +1,5 @@
 function getHistoryHTML(history){
-    return ` <div class="history-field" id=${history.id}>
+    return ` <div class="history-field" id=${history.id} onclick="loadHistoryData('${history.id}')">
           <div class="left-section">
             <div class="status-icons">
                <img src="./asets/${history.status_icon}" alt="" width="16px" height="16px"/>
@@ -25,32 +25,46 @@ function getHistoryHTML(history){
           </div>
         </div>`;
 }
-
-
-
-
 const historyContainer = document.getElementById('history-container');
-
 
 function addHistoryList(allHistory){
     historyContainer.innerHTML = '';
+
     allHistory.forEach(history => {
         historyContainer.innerHTML+=getHistoryHTML(history);
     
     });
+    updateStorage(allHistory);
 }
 
 function addHistory(history){
-    allHistory.push(history);   
-    addHistoryList(allHistory); 
+  let allHistory = getAllHistory();
+  allHistory.push(history);   
+  addHistoryList(allHistory); 
+  updateStorage(allHistory);
+
 }
 
-addHistoryList(allHistory);
-
 function removeHistory(id){
-   
+    let allHistory = getAllHistory()
     allHistory = allHistory.filter((history)=>{
        return history.id !=id;
     })
     addHistoryList(allHistory);
+    updateStorage(allHistory);
 }
+
+function initStorage(){
+  if(localStorage.getItem("history")=== undefined){
+    localStorage.setItem("history", JSON.stringify([]));
+  }
+}
+function updateStorage(allHistory){
+  localStorage.setItem("history", JSON.stringify(allHistory));
+}
+function getAllHistory(){
+    return JSON.parse(localStorage.getItem("history"));
+}
+
+initStorage();
+addHistoryList(getAllHistory());
