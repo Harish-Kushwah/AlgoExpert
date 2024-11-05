@@ -450,9 +450,47 @@ function startVisualization() {
     }
 }
 
+// var now = new Date();
+// if (now.getMonth() == 11) {
+//     var current = new Date(now.getFullYear() + 1, 0, 1);
+// } else {
+//     var current = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+// }
+
+// const localHistory = {
+//         id:5,
+//         status_icon:'mark.png',
+//         numbers:[],
+//         algorithm:'',
+//         date:new Date().toLocaleDateString(),
+
+//         setData:(array,algorithm)=>{
+//             this.numbers = array;
+//             this.algorithm = algorithm;
+//         }
+// }
+
+
 // Start sorting
+
+function guidGenerator() {
+    var S4 = function() {
+       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    };
+    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+}
+
 startButton.addEventListener('click', () => {
     startVisualization();
+
+    addHistory({
+        id:guidGenerator(),
+        status_icon:'check.png',
+        numbers:array,
+        algorithm:selectAlgorithm.value,
+        date:new Date().toLocaleString(),
+    });
+
 });
 generateRandomArrayBtn.addEventListener('click', () => {
     let randomArray = [];

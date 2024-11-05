@@ -19,7 +19,7 @@ function getHistoryHTML(history){
             </div>
           </div>
           <div class="right-section">
-            <div class="status-icons" onclick="removeHistory(${history.id})">
+            <div class="status-icons" onclick="removeHistory('${history.id}')">
               <img src="./asets/delete.png" alt="" width="30px" height="30px" class="delete-icon"/>
            </div>
           </div>
@@ -31,19 +31,26 @@ function getHistoryHTML(history){
 
 const historyContainer = document.getElementById('history-container');
 
-function addHistory(allHistory){
+
+function addHistoryList(allHistory){
+    historyContainer.innerHTML = '';
     allHistory.forEach(history => {
         historyContainer.innerHTML+=getHistoryHTML(history);
     
     });
 }
 
-addHistory(allHistory);
+function addHistory(history){
+    allHistory.push(history);   
+    addHistoryList(allHistory); 
+}
+
+addHistoryList(allHistory);
 
 function removeHistory(id){
-    historyContainer.innerHTML = '';
+   
     allHistory = allHistory.filter((history)=>{
        return history.id !=id;
     })
-    addHistory(allHistory);
+    addHistoryList(allHistory);
 }
