@@ -1,15 +1,15 @@
 const ctx = document.getElementById('complexityChart').getContext('2d');
 
-var chart ;
+var chart;
 function paintChart(array) {
 
-    if(chart){
+    if (chart) {
         chart.destroy();
     }
     const size = array.length;
-    function getArrayData(){
+    function getArrayData() {
         var data = []
-        for(let i = 10; i<100;i+=10){
+        for (let i = 10; i < 100; i += 10) {
             data.push(i);
         }
         return data;
@@ -49,7 +49,7 @@ function paintChart(array) {
                     position: 'top',
                     labels: {
                         usePointStyle: true,
-                      },
+                    },
                 },
                 title: {
                     display: true,
@@ -73,5 +73,5 @@ function paintChart(array) {
             }
         }
     });
-    
+
 }

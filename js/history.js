@@ -1,5 +1,5 @@
-function getHistoryHTML(history){
-    return ` <div class="history-field" id=${history.id} onclick="loadHistoryData('${history.id}')">
+function getHistoryHTML(history) {
+  return ` <div class="history-field" id=${history.id} onclick="loadHistoryData('${history.id}')">
           <div class="left-section">
             <div class="status-icons">
                <img src="./asets/${history.status_icon}" alt="" width="16px" height="16px"/>
@@ -27,43 +27,43 @@ function getHistoryHTML(history){
 }
 const historyContainer = document.getElementById('history-container');
 
-function addHistoryList(allHistory){
-    historyContainer.innerHTML = '';
+function addHistoryList(allHistory) {
+  historyContainer.innerHTML = '';
 
-    allHistory.forEach(history => {
-        historyContainer.innerHTML+=getHistoryHTML(history);
-    
-    });
-    updateStorage(allHistory);
+  allHistory.forEach(history => {
+    historyContainer.innerHTML += getHistoryHTML(history);
+
+  });
+  updateStorage(allHistory);
 }
 
-function addHistory(history){
+function addHistory(history) {
   let allHistory = getAllHistory();
-  allHistory.push(history);   
-  addHistoryList(allHistory); 
+  allHistory.push(history);
+  addHistoryList(allHistory);
   updateStorage(allHistory);
 
 }
 
-function removeHistory(id){
-    let allHistory = getAllHistory()
-    allHistory = allHistory.filter((history)=>{
-       return history.id !=id;
-    })
-    addHistoryList(allHistory);
-    updateStorage(allHistory);
+function removeHistory(id) {
+  let allHistory = getAllHistory()
+  allHistory = allHistory.filter((history) => {
+    return history.id != id;
+  })
+  addHistoryList(allHistory);
+  updateStorage(allHistory);
 }
 
-function initStorage(){
-  if(localStorage.getItem("history")=== undefined){
+function initStorage() {
+  if (localStorage.getItem("history") === undefined) {
     localStorage.setItem("history", JSON.stringify([]));
   }
 }
-function updateStorage(allHistory){
+function updateStorage(allHistory) {
   localStorage.setItem("history", JSON.stringify(allHistory));
 }
-function getAllHistory(){
-    return JSON.parse(localStorage.getItem("history"));
+function getAllHistory() {
+  return JSON.parse(localStorage.getItem("history"));
 }
 
 initStorage();

@@ -1,5 +1,5 @@
-function getCountSortPython(array){
-  return  `
+function getCountSortPython(array) {
+    return `
   def count_sort(input_array):
     # Finding the maximum element of input_array.
     M = max(input_array)
@@ -34,10 +34,10 @@ function getCountSortPython(array){
 
     for num in output_array:
         print(num, end=" ")
-`; 
+`;
 }
-function getCountSortC(array){
-  return  `
+function getCountSortC(array) {
+    return `
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -97,8 +97,8 @@ int main() {
 }
   `
 }
-function getCountSortCpp(array){
-  return  `
+function getCountSortCpp(array) {
+    return `
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -161,8 +161,8 @@ int main()
 
   `
 }
-function getCountSortJava(array){
-  return  `
+function getCountSortJava(array) {
+    return `
 import java.util.Arrays;
 
 public class CountSort {
@@ -206,8 +206,8 @@ public class CountSort {
 
   `
 }
-function getRadixSortPython(array){
-  return  `
+function getRadixSortPython(array) {
+    return `
 # Python program for implementation of Radix Sort
 # A function to do counting sort of arr[] according to
 # the digit represented by exp.
@@ -275,8 +275,8 @@ for i in range(len(arr)):
 
 `
 }
-function getRadixSortC(array){
-  return  `
+function getRadixSortC(array) {
+    return `
 #include <stdio.h>
 
 // A utility function to get the maximum 
@@ -353,8 +353,8 @@ int main() {
 
 `
 }
-function getRadixSortCpp(array){
-  return  `
+function getRadixSortCpp(array) {
+    return `
 // C++ implementation of Radix Sort
 
 #include <iostream>
@@ -444,8 +444,8 @@ int main()
 
 `
 }
-function getRadixSortJava(array){
-  return  `
+function getRadixSortJava(array) {
+    return `
 // Radix sort Java implementation
 
 import java.io.*;
@@ -529,8 +529,8 @@ class Radix {
 
 `
 }
-function getBucketSortPython(array){
-  return  `
+function getBucketSortPython(array) {
+    return `
 def insertion_sort(bucket):
     for i in range(1, len(bucket)):
         key = bucket[i]
@@ -567,8 +567,8 @@ print(" ".join(map(str, arr)))
 
 `
 }
-function getBucketSortC(array){
-  return  `
+function getBucketSortC(array) {
+    return `
 #include <stdio.h>  
 int getMax(int a[], int n) // function to get maximum element from the given array  
 {  
@@ -617,8 +617,8 @@ int main()
 
 `
 }
-function getBucketSortCpp(array){
-  return `
+function getBucketSortCpp(array) {
+    return `
   #include <iostream>
   #include <vector>
   using namespace std;
@@ -675,8 +675,8 @@ function getBucketSortCpp(array){
   }  
 `
 }
-function getBucketSortJava(array){
-  return  `
+function getBucketSortJava(array) {
+    return `
 import java.util.ArrayList;
 import java.util.List;
 
@@ -745,7 +745,7 @@ const cppBtn = document.getElementById('cpp-btn');
 const cBtn = document.getElementById('c-btn');
 var codeSection = document.querySelector('.code-section');
 
-function getArray(){
+function getArray() {
     array = []
     for (let x of numbers.value.split(',')) {
         array.push(x);
@@ -753,139 +753,139 @@ function getArray(){
     return array;
 }
 
-function addPythonCode(array){
+function addPythonCode(array) {
     const pre = document.createElement('pre');
     const code = document.createElement('code');
     code.classList.add('language-python');
 
-    if(selectAlgorithm.value ==='count-sort'){
-        code.textContent =  getCountSortPython(array);
+    if (selectAlgorithm.value === 'count-sort') {
+        code.textContent = getCountSortPython(array);
     }
-    else if(selectAlgorithm.value === 'radix-sort'){
-        code.textContent =  getRadixSortPython(array);
+    else if (selectAlgorithm.value === 'radix-sort') {
+        code.textContent = getRadixSortPython(array);
     }
-    else if(selectAlgorithm.value === 'bucket-sort'){
-        code.textContent =  getBucketSortPython(array);
+    else if (selectAlgorithm.value === 'bucket-sort') {
+        code.textContent = getBucketSortPython(array);
 
     }
 
     pre.appendChild(code);
-    codeSection.innerHTML='';
+    codeSection.innerHTML = '';
     codeSection.append(pre);
     Prism.highlightElement(code);
 }
-function addCCode(array){
+function addCCode(array) {
     const pre = document.createElement('pre');
     const code = document.createElement('code');
     code.classList.add('language-clike');
 
-    if(selectAlgorithm.value ==='count-sort'){
-        code.textContent =  getCountSortC(array);
+    if (selectAlgorithm.value === 'count-sort') {
+        code.textContent = getCountSortC(array);
     }
-    else if(selectAlgorithm.value === 'radix-sort'){
-        code.textContent =  getRadixSortC(array);
+    else if (selectAlgorithm.value === 'radix-sort') {
+        code.textContent = getRadixSortC(array);
     }
-    else if(selectAlgorithm.value === 'bucket-sort'){
-        code.textContent =  getBucketSortC(array);
+    else if (selectAlgorithm.value === 'bucket-sort') {
+        code.textContent = getBucketSortC(array);
 
 
     }
     pre.appendChild(code);
-    
-    codeSection.innerHTML='';
+
+    codeSection.innerHTML = '';
 
     codeSection.append(pre);
     Prism.highlightElement(code);
 }
-function addCppCode(array){
+function addCppCode(array) {
     const pre = document.createElement('pre');
     const code = document.createElement('code');
     code.classList.add('language-clike');
 
-    if(selectAlgorithm.value ==='count-sort'){
-        code.textContent =  getCountSortCpp(array);
+    if (selectAlgorithm.value === 'count-sort') {
+        code.textContent = getCountSortCpp(array);
     }
-    else if(selectAlgorithm.value === 'radix-sort'){
-        code.textContent =  getRadixSortCpp(array);
+    else if (selectAlgorithm.value === 'radix-sort') {
+        code.textContent = getRadixSortCpp(array);
     }
-    else if(selectAlgorithm.value === 'bucket-sort'){
-        code.textContent =  getBucketSortCpp(array);
+    else if (selectAlgorithm.value === 'bucket-sort') {
+        code.textContent = getBucketSortCpp(array);
 
     }
 
     pre.appendChild(code);
-    codeSection.innerHTML='';
+    codeSection.innerHTML = '';
 
     codeSection.append(pre);
     Prism.highlightElement(code);
 }
-function addJavaCode(array){
+function addJavaCode(array) {
     const pre = document.createElement('pre');
     const code = document.createElement('code');
     code.classList.add('language-java');
 
-    if(selectAlgorithm.value ==='count-sort'){
-        code.textContent =  getCountSortJava(array);
+    if (selectAlgorithm.value === 'count-sort') {
+        code.textContent = getCountSortJava(array);
     }
-    else if(selectAlgorithm.value === 'radix-sort'){
-        code.textContent =  getRadixSortJava(array);
+    else if (selectAlgorithm.value === 'radix-sort') {
+        code.textContent = getRadixSortJava(array);
     }
-    else if(selectAlgorithm.value === 'bucket-sort'){
-        code.textContent =  getBucketSortJava(array);
+    else if (selectAlgorithm.value === 'bucket-sort') {
+        code.textContent = getBucketSortJava(array);
 
     }
 
     pre.appendChild(code);
-    codeSection.innerHTML='';
+    codeSection.innerHTML = '';
 
     codeSection.append(pre);
     Prism.highlightElement(code);
 }
 
-pythonBtn.addEventListener('click',()=>{
+pythonBtn.addEventListener('click', () => {
     activeBtn("python");
     addPythonCode(getArray());
 })
-cBtn.addEventListener('click',()=>{
+cBtn.addEventListener('click', () => {
     activeBtn("c");
     addCCode(getArray());
 })
-cppBtn.addEventListener('click',()=>{
+cppBtn.addEventListener('click', () => {
     activeBtn("cpp");
     addCppCode(getArray());
 
 })
-javaBtn.addEventListener('click',()=>{
+javaBtn.addEventListener('click', () => {
     activeBtn("java");
     addJavaCode(getArray());
 
 })
 
-function activeBtn(str){
+function activeBtn(str) {
     deactivateAllBtn();
 
-    if(str === "python"){
+    if (str === "python") {
         pythonBtn.classList.add("active-icon");
     }
-    else if(str === "c"){
+    else if (str === "c") {
         cBtn.classList.add("active-icon");
     }
-    else if(str === "cpp"){
+    else if (str === "cpp") {
         cppBtn.classList.add("active-icon");
     }
-    else if(str === "java"){
+    else if (str === "java") {
         javaBtn.classList.add("active-icon");
     }
 }
 
-function deactivateAllBtn(){
+function deactivateAllBtn() {
     pythonBtn.classList.remove("active-icon");
     cBtn.classList.remove("active-icon");
     cppBtn.classList.remove("active-icon");
     javaBtn.classList.remove("active-icon");
 }
 
-function initCodeSection(){
+function initCodeSection() {
     activeBtn("c");
     addCCode(getArray());
 }

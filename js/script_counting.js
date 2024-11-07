@@ -474,21 +474,21 @@ function startVisualization() {
 // Start sorting
 
 function guidGenerator() {
-    var S4 = function() {
-       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    var S4 = function () {
+        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
     };
-    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+    return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
 
 startButton.addEventListener('click', () => {
     startVisualization();
 
     addHistory({
-        id:guidGenerator(),
-        status_icon:'check.png',
-        numbers:array,
-        algorithm:selectAlgorithm.value,
-        date:new Date().toLocaleString(),
+        id: guidGenerator(),
+        status_icon: 'check.png',
+        numbers: array,
+        algorithm: selectAlgorithm.value,
+        date: new Date().toLocaleString(),
     });
 
 });
@@ -585,10 +585,10 @@ downloadBtn.addEventListener('click', function () {
     } // Call your sorting function
 });
 
-function loadHistoryData(id){
-    if(localStorage.getItem("history") != undefined){
+function loadHistoryData(id) {
+    if (localStorage.getItem("history") != undefined) {
         let allHistory = JSON.parse(localStorage.getItem("history"));
-        allHistory = allHistory.filter((history)=>{
+        allHistory = allHistory.filter((history) => {
             return history.id === id;
         })
         numbers.value = allHistory[0].numbers
