@@ -55,7 +55,7 @@ function removeHistory(id) {
 }
 
 function initStorage() {
-  if (localStorage.getItem("history") === undefined) {
+  if (localStorage.getItem("history")==null || localStorage.getItem("history") === undefined) {
     localStorage.setItem("history", JSON.stringify([]));
   }
 }
