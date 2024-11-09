@@ -83,11 +83,25 @@
 .start {
   background-color: #7b2bf4;
 }
+.start:hover{
+  background-color: #6f10fe;
+  transition-duration: 0.5s;
+}
 .reset {
   background-color: #0a991a;
 }
+.reset:hover {
+  background-color: #068515;
+  transition-duration: 0.5s;
+
+}
 .pause {
   background-color: #ff295e;
+}
+.pause:hover {
+  background-color: #fa114b;
+  transition-duration: 0.5s;
+
 }
 .generate {
   margin: 10px 0px;

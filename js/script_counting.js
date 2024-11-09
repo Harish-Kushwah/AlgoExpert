@@ -28,7 +28,6 @@ const maxArraySize = document.getElementById('max-size');
 const minArraySize = document.getElementById('min-size');
 const generateRandomArrayBtn = document.getElementById('generate');
 const downloadBtn = document.getElementById('download-page');
-// const generateNumberFilterSelectedValue = document.querySelector('input[name="filter"]:checked').value;
 
 
 // Initialize and display the array
@@ -387,8 +386,6 @@ function resetVisualization() {
     pauseButton.textContent = 'Pause';
     startButton.classList.remove('deactivate-icon');
 
-
-
     // remove the previous snapshots
     while (snapshots.length) {
         snapshots.pop();
@@ -450,28 +447,6 @@ function startVisualization() {
     }
 }
 
-// var now = new Date();
-// if (now.getMonth() == 11) {
-//     var current = new Date(now.getFullYear() + 1, 0, 1);
-// } else {
-//     var current = new Date(now.getFullYear(), now.getMonth() + 1, 1);
-// }
-
-// const localHistory = {
-//         id:5,
-//         status_icon:'mark.png',
-//         numbers:[],
-//         algorithm:'',
-//         date:new Date().toLocaleDateString(),
-
-//         setData:(array,algorithm)=>{
-//             this.numbers = array;
-//             this.algorithm = algorithm;
-//         }
-// }
-
-
-// Start sorting
 
 function guidGenerator() {
     var S4 = function () {
