@@ -26,15 +26,35 @@ function getHistoryHTML(history) {
         </div>`;
 }
 const historyContainer = document.getElementById('history-container');
+const clearHistory = document.getElementById("clearHistory");
+
 
 function addHistoryList(allHistory) {
   historyContainer.innerHTML = '';
 
-  allHistory.forEach(history => {
-    historyContainer.innerHTML += getHistoryHTML(history);
+  if (allHistory.length > 0) {
+    allHistory.forEach(history => {
+      historyContainer.innerHTML += getHistoryHTML(history);
 
-  });
-  updateStorage(allHistory);
+    });
+    updateStorage(allHistory);
+
+    clearHistory.style.display = 'block';
+  }
+  else {
+    // historyContainer.innerHTML = "No History";
+    clearHistory.style.display = 'none';
+    const img = document.createElement("img");
+    img.src = "../asets/no_history.gif";
+    img.classList.add("history-gif");
+    historyContainer.appendChild(img);
+
+    const info = document.createElement("h5");
+    info.textContent = "Oops! No Visualization History";
+    info.style.textAlign = 'center';
+    historyContainer.appendChild(info);
+
+  }
 }
 
 function addHistory(history) {
@@ -54,8 +74,16 @@ function removeHistory(id) {
   updateStorage(allHistory);
 }
 
+function clearAllHistory() {
+  let allHistory = getAllHistory()
+  if (allHistory.length > 0) {
+    localStorage.setItem("history", JSON.stringify([]));
+    addHistoryList(getAllHistory());
+  }
+}
+
 function initStorage() {
-  if (localStorage.getItem("history")==null || localStorage.getItem("history") === undefined) {
+  if (localStorage.getItem("history") == null || localStorage.getItem("history") === undefined) {
     localStorage.setItem("history", JSON.stringify([]));
   }
 }
@@ -68,3 +96,6 @@ function getAllHistory() {
 
 initStorage();
 addHistoryList(getAllHistory());
+
+clearHistory.addEventListener('click', clearAllHistory);
+

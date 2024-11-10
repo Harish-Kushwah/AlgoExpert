@@ -51,7 +51,14 @@
 .number {
   overflow: hidden;
 }
-
+.history-gif{
+  aspect-ratio: 1.43;
+  object-fit: contain;
+  object-position: center;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
 @media only screen and (max-width: 768px) {
   .offcanvas {
     height: 80% !important;
