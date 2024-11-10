@@ -45,7 +45,7 @@ function addHistoryList(allHistory) {
     // historyContainer.innerHTML = "No History";
     clearHistory.style.display = 'none';
     const img = document.createElement("img");
-    img.src = "../asets/no_history.gif";
+    img.src = "./asets/no_history.gif";
     img.classList.add("history-gif");
     historyContainer.appendChild(img);
 
@@ -53,6 +53,7 @@ function addHistoryList(allHistory) {
     info.textContent = "Oops! No Visualization History";
     info.style.textAlign = 'center';
     historyContainer.appendChild(info);
+
 
   }
 }
