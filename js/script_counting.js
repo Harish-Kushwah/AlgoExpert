@@ -414,6 +414,7 @@ function resetVisualization() {
 function startVisualization() {
     if (numbers.value.length == 0) {
         alert("Enter Numbers");
+
     }
     else if (selectAlgorithm.value == 'null') {
         alert('Select Algorithm');
@@ -441,10 +442,11 @@ function startVisualization() {
             bucketSort();
         }
         initCodeSection();
-
         // paintChart(originalArray);
+        return true;
 
     }
+    return false;
 }
 
 
@@ -456,15 +458,15 @@ function guidGenerator() {
 }
 
 startButton.addEventListener('click', () => {
-    startVisualization();
-
-    addHistory({
-        id: guidGenerator(),
-        status_icon: 'check.png',
-        numbers: array,
-        algorithm: selectAlgorithm.value,
-        date: new Date().toLocaleString(),
-    });
+    if (startVisualization()) {
+        addHistory({
+            id: guidGenerator(),
+            status_icon: 'check.png',
+            numbers: array,
+            algorithm: selectAlgorithm.value,
+            date: new Date().toLocaleString(),
+        });
+    }
 
 });
 generateRandomArrayBtn.addEventListener('click', () => {

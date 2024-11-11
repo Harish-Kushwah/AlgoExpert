@@ -54,6 +54,14 @@ function addHistoryList(allHistory) {
     info.style.textAlign = 'center';
     historyContainer.appendChild(info);
 
+    const div = document.createElement("div");
+    div.classList.add("start-visualization-section");
+    const anchor = document.createElement("a");
+    anchor.href = "/AlgoExpert/playground.html"
+    div.appendChild(anchor);
+    anchor.classList.add("start-visualization")
+    anchor.textContent = "Start Visualization"
+    historyContainer.appendChild(div);
 
   }
 }
