@@ -573,3 +573,19 @@ function loadHistoryData(id) {
     }
 
 }
+
+
+randomArraySize.addEventListener("keydown", increaseDecreaseValue);
+maxArraySize.addEventListener("keydown", increaseDecreaseValue);
+minArraySize.addEventListener("keydown", increaseDecreaseValue);
+
+function increaseDecreaseValue(event) {
+    var curNum = Number(event.target.value);
+    if (event.key === 'ArrowUp') {
+        curNum++;
+    }
+    else if (event.key === 'ArrowDown') {
+        curNum--;
+    }
+    event.target.value = curNum;
+}
