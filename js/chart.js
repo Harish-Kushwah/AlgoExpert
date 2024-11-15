@@ -6,7 +6,7 @@ class ComplexityChart {
         this.data = data;
     }
 
-    paintChart(n = 10, k = 10, timeComplexityFunc = (n) => { return n }, spaceComplexityFunc = (n) => { return n }) {
+    paintChart(n = 10, k = 10, timeComplexityFunc=this.data.timeComplexityFunc, spaceComplexityFunc=this.data.spaceComplexityFunc) {
         // Get the context of the canvas
 
         if (this.chart) {
@@ -19,11 +19,9 @@ class ComplexityChart {
         // Generate an array of n random numbers between min and max
         const inputSizes = Array.from({ length: n }, () => Math.floor(Math.random() * (max - min + 1)) + min).sort();
 
-
-        console.log(timeComplexityFunc);
         // Sample data for different input sizes
-        const timeComplexity = inputSizes.map(timeComplexityFunc); // Simulating O(n + k) for time
-        const spaceComplexity = inputSizes.map(spaceComplexityFunc); // Simulating O(n + k) for space (with k=30)
+        const timeComplexity = inputSizes.map(timeComplexityFunc); 
+        const spaceComplexity = inputSizes.map(spaceComplexityFunc); 
 
         // Create the Chart.js line chart with two datasets
         this.chart = new Chart(this.ctx, {
@@ -42,7 +40,7 @@ class ComplexityChart {
                         pointBackgroundColor: 'rgba(75, 192, 192, 1)',
                     },
                     {
-                        label: `Space Complexity (O(${this.data.complexity.spaceComplexity}))`,
+                        label: `Space Complexity (${this.data.complexity.spaceComplexity})`,
                         data: spaceComplexity,
                         borderColor: 'rgba(255, 99, 132, 1)',
                         backgroundColor: 'rgba(255, 99, 132, 0.2)',
@@ -117,9 +115,8 @@ class ComplexityChart {
         plotButton.id = 'plot-chart';
         plotButton.textContent = 'Plot Chart';
         group.appendChild(plotButton);
-        var data = this.data
       
-        plotButton.addEventListener("click", (data) => {
+        plotButton.addEventListener("click", () => {
             const n = document.getElementById("total-size").value;
             const k = document.getElementById("max-no").value;
             
@@ -131,7 +128,7 @@ class ComplexityChart {
 
             }
             else {
-                this.paintChart(n, k, data.timeComplexityFunc, data.spaceComplexityFunc);
+                this.paintChart(n, k, this.data.timeComplexityFunc, this.data.spaceComplexityFunc);
             }
 
         });
@@ -152,9 +149,5 @@ class ComplexityChart {
         section.appendChild(chartContainer);
 
         parent.appendChild(section);
-
-
-
     }
-
 }

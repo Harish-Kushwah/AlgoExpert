@@ -79,7 +79,7 @@ function createComplexityAnalysis(data) {
 
     const avgCase = document.createElement('li');
     avgCase.classList.add('li-content');
-    avgCase.textContent = `Average Case: ${data.complexity.timeComplexity.avgCase}`;
+    avgCase.textContent = `Average Case: ${data.complexity.timeComplexity.averageCase}`;
     timeComplexityDetails.appendChild(avgCase);
 
     const worstCase = document.createElement('li');
@@ -132,7 +132,6 @@ function createAlgorithmSection(algorithms) {
 }
 function addClassToActiveBar(index){
     const bars = document.querySelectorAll(".algorithm");
-    console.log(bars);
     for(let bar of bars){
         bar.classList.remove("active-bar");
     }
