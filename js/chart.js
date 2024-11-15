@@ -1,77 +1,160 @@
-const ctx = document.getElementById('complexityChart').getContext('2d');
-
-var chart;
-function paintChart(array) {
-
-    if (chart) {
-        chart.destroy();
+class ComplexityChart {
+    constructor(parent, data) {
+        this.initChartHtml(parent);
+        this.ctx = document.getElementById('complexityChart').getContext('2d');
+        this.chart = false;
+        this.data = data;
     }
-    const size = array.length;
-    function getArrayData() {
-        var data = []
-        for (let i = 10; i < 100; i += 10) {
-            data.push(i);
+
+    paintChart(n = 10, k = 10, timeComplexityFunc = (n) => { return n }, spaceComplexityFunc = (n) => { return n }) {
+        // Get the context of the canvas
+
+        if (this.chart) {
+            this.chart.destroy();
         }
-        return data;
-    }
-    // Example data
-    const inputSizes = getArrayData()
-    const timeComplexity = inputSizes.map(n => n * Math.log(n)); // O(n log n) approximation
-    const spaceComplexity = inputSizes.map(n => n); // O(n) approximation
 
-    chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: inputSizes,
-            datasets: [
-                {
-                    label: 'Time Complexity (O(n log n))',
-                    data: timeComplexity,
-                    borderColor: 'blue',
-                    borderWidth: 1,
-                    fill: false,
-                    tension: 0.1
-                },
-                {
-                    label: 'Space Complexity (O(n))',
-                    data: spaceComplexity,
-                    borderColor: 'green',
-                    borderWidth: 1,
-                    fill: false,
-                    tension: 0.1
-                }
-            ]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                    labels: {
-                        usePointStyle: true,
+        const min = 100; // Minimum value for the random range
+        const max = 1000; // Maximum value for the random range
+
+        // Generate an array of n random numbers between min and max
+        const inputSizes = Array.from({ length: n }, () => Math.floor(Math.random() * (max - min + 1)) + min).sort();
+
+
+        console.log(timeComplexityFunc);
+        // Sample data for different input sizes
+        const timeComplexity = inputSizes.map(timeComplexityFunc); // Simulating O(n + k) for time
+        const spaceComplexity = inputSizes.map(spaceComplexityFunc); // Simulating O(n + k) for space (with k=30)
+
+        // Create the Chart.js line chart with two datasets
+        this.chart = new Chart(this.ctx, {
+            type: 'line',
+            data: {
+                labels: inputSizes,
+                datasets: [
+                    {
+                        label: `Time Complexity (${this.data.complexity.timeComplexity.worstCase})`,
+                        data: timeComplexity,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 5,
+                        pointBackgroundColor: 'rgba(75, 192, 192, 1)',
                     },
-                },
-                title: {
-                    display: true,
-                    text: 'Radix Sort Time and Space Complexity'
-                }
+                    {
+                        label: `Space Complexity (O(${this.data.complexity.spaceComplexity}))`,
+                        data: spaceComplexity,
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        fill: true,
+                        tension: 0.3,
+                        pointRadius: 5,
+                        pointBackgroundColor: 'rgba(255, 99, 132, 1)',
+                    }
+                ]
             },
-            scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Input Size (n)'
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Input Size (n)'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Complexity'
+                        }
                     }
                 },
-                y: {
-                    title: {
+                plugins: {
+                    legend: {
                         display: true,
-                        text: 'Operations'
-                    },
-                    beginAtZero: true
+                        position: 'bottom'
+                    }
                 }
             }
-        }
-    });
+        })
+    };
+
+    initChartHtml(parent) {
+        // Create the section element
+        const section = document.createElement('section');
+        section.classList.add('chart-section');
+
+        // Create the title paragraph
+        const title = document.createElement('p');
+        title.classList.add('content-title');
+        title.textContent = 'Visualize complexity chart';
+        section.appendChild(title);
+
+        // Create the div for the input group
+        const group = document.createElement('div');
+        group.classList.add('group');
+
+        // Create the first input for "n"
+        const inputN = document.createElement('input');
+        inputN.type = 'text';
+        inputN.classList.add('inputs');
+        inputN.name = 'n';
+        inputN.id = 'total-size';
+        inputN.placeholder = 'Enter n';
+        group.appendChild(inputN);
+
+        // Create the second input for "k"
+        const inputK = document.createElement('input');
+        inputK.type = 'text';
+        inputK.classList.add('inputs');
+        inputK.name = 'k';
+        inputK.id = 'max-no';
+        inputK.placeholder = 'Enter k';
+        group.appendChild(inputK);
+
+        // Create the Plot Chart button
+        const plotButton = document.createElement('button');
+        plotButton.classList.add('mbtn', 'reset', 'generate', 'inputs', 'plot-chart');
+        plotButton.id = 'plot-chart';
+        plotButton.textContent = 'Plot Chart';
+        group.appendChild(plotButton);
+        var data = this.data
+      
+        plotButton.addEventListener("click", (data) => {
+            const n = document.getElementById("total-size").value;
+            const k = document.getElementById("max-no").value;
+            
+            if (n.length == 0) {
+                alert("Enter Value of n");
+            }
+            else if (k.length == 0) {
+                alert("Enter Value of k");
+
+            }
+            else {
+                this.paintChart(n, k, data.timeComplexityFunc, data.spaceComplexityFunc);
+            }
+
+        });
+
+        // Append the group to the section
+        section.appendChild(group);
+
+        // Create the chart container
+        const chartContainer = document.createElement('div');
+        chartContainer.classList.add('chart-container');
+
+        // Create the canvas for the chart
+        const canvas = document.createElement('canvas');
+        canvas.id = 'complexityChart';
+        chartContainer.appendChild(canvas);
+
+        // Append the chart container to the section
+        section.appendChild(chartContainer);
+
+        parent.appendChild(section);
+
+
+
+    }
 
 }
