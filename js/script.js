@@ -13,7 +13,6 @@ function toggleImage() {
 function createNavbar() {
 
     let BASE_URL = '/AlgoExpert';
-     BASE_URL = '';
 
     // Create main nav element
     const nav = document.createElement("nav");
@@ -156,7 +155,6 @@ function activatePageLink() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const page_name = urlParams.get('page');
-    console.log(page_name);
     addClassToActiveLink(page_name);
 }
 
