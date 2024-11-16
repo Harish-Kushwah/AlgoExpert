@@ -189,7 +189,7 @@ pre[class*="language-"] {
 }
 .copy-btn {
   cursor: pointer;
-  background-image: url("../asets/copy.png");
+  background-image: url("../assets/copy.png");
   height: 20px;
   width: 20px;
   background-repeat: no-repeat; /* Do not repeat the image */
@@ -206,7 +206,7 @@ pre[class*="language-"] {
   transition-duration: 0.5s;
 }
 .active-copy-icon {
-  background-image: url("../asets/copied.png");
+  background-image: url("../assets/copied.png");
 }
 .deactivate-icon {
   opacity: 0.5;
