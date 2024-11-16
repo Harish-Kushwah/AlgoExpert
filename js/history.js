@@ -2,7 +2,7 @@ function getHistoryHTML(history) {
   return ` <div class="history-field" id=${history.id} onclick="loadHistoryData('${history.id}')">
           <div class="left-section">
             <div class="status-icons">
-               <img src="./asets/${history.status_icon}" alt="" width="16px" height="16px"/>
+               <img src="./assets/${history.status_icon}" alt="" width="16px" height="16px"/>
             </div>
           </div>
           <div class="middle-section">
@@ -20,7 +20,7 @@ function getHistoryHTML(history) {
           </div>
           <div class="right-section">
             <div class="status-icons" onclick="removeHistory('${history.id}')">
-              <img src="./asets/delete.png" alt="" width="30px" height="30px" class="delete-icon"/>
+              <img src="./assets/delete.png" alt="" width="30px" height="30px" class="delete-icon"/>
            </div>
           </div>
         </div>`;
@@ -45,7 +45,7 @@ function addHistoryList(allHistory) {
     // historyContainer.innerHTML = "No History";
     clearHistory.style.display = 'none';
     const img = document.createElement("img");
-    img.src = "./asets/no_history.gif";
+    img.src = "./assets/no_history.gif";
     img.classList.add("history-gif");
     historyContainer.appendChild(img);
 
@@ -57,7 +57,7 @@ function addHistoryList(allHistory) {
     const div = document.createElement("div");
     div.classList.add("start-visualization-section");
     const anchor = document.createElement("a");
-    anchor.href = "/AlgoExpert/playground.html"
+    anchor.href = "/AlgoExpert/playground.html?page=playground"
     div.appendChild(anchor);
     anchor.classList.add("start-visualization")
     anchor.textContent = "Start Visualization"

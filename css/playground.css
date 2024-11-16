@@ -244,6 +244,7 @@ pre[class*="language-"] {
   justify-content: flex-start;
 }
 
+
 @media only screen and (max-width: 768px) {
   .container1 {
     flex-wrap: wrap;

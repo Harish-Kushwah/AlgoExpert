@@ -589,3 +589,15 @@ function increaseDecreaseValue(event) {
     }
     event.target.value = curNum;
 }
+
+
+// scroll code implementation page to top 
+var anchor = document.getElementById("ide-page");
+anchor?.addEventListener('click', function (event) {
+    var target = document.getElementById("code-container");
+    window.scrollTo({
+        top: target.offsetTop - 180,
+        behavior: 'smooth'
+    });
+}
+);
