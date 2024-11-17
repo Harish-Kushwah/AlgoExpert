@@ -1,0 +1,87 @@
+.welcome-section {
+    padding: 60px 20px;
+    background-color: #f8f9fa;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 3px;
+  }
+  
+  .welcome-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  .welcome-text {
+    /* max-width: 800px; */
+    text-align: center;
+  }
+  
+  .welcome-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #4a4a4a;
+  }
+  
+  .welcome-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #6c757d;
+  }
+  
+  .welcome-text ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+    width: 100%;
+    display: none;
+  }
+  
+  .welcome-text ul li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #343a40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .welcome-text ul li::before {
+    content: "✔";
+    color: #5cb85c;
+    margin-right: 10px;
+    font-size: 1.2rem;
+  }
+  .explore-button {
+    display: inline-block;
+    padding: 5px 10px;
+    color: #6c63ff;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    border: 1px solid #6c63ff;
+  }
+  
+  .explore-button:hover {
+    color: #2f23b7;
+    border: 1px solid #2f23b7;
+
+  }
+  
+  @media (max-width: 768px) {
+    .welcome-content {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .welcome-text {
+      max-width: 100%;
+    }
+  }
+  

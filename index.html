@@ -10,13 +10,13 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <link rel="icon" type="image/x-icon" href="/assets/algorithm-fav.png">
+    <link rel="icon" type="image/x-icon" href="./assets/algorithm-fav.png" />
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/welcome.css" />
     <style></style>
   </head>
   <body>
-    <header class="header sticky-top">
-    </header>
+    <header class="header sticky-top"></header>
 
     <section class="hero-section">
       <div class="hero-content">
@@ -24,7 +24,9 @@
           <h2 class="hero-title">
             Learn <span class="highlight">Algorithm</span> by Visualizing
           </h2>
-          <a href="/AlgoExpert/playground.html?page=playground" class="cta-button"
+          <a
+            href="/AlgoExpert/playground.html?page=playground"
+            class="cta-button"
             >Go to Playground</a
           >
         </div>
@@ -36,7 +38,81 @@
       </div>
     </section>
 
-    <section class="content">
+    <section id="video-section" class="interactive-video-container">
+      <section class="welcome-section">
+        <div class="welcome-content">
+          <div class="welcome-text">
+            <h1>Welcome to AlgoExpert!</h1>
+            <p>
+              Discover, learn, and master algorithms like never before. Dive
+              into interactive visualizations, step-by-step tutorials, and
+              hands-on playgrounds designed to make algorithm learning easy and
+              fun.
+            </p>
+            <ul>
+              <li>💡 Explore interactive algorithm visualizations.</li>
+              <li>📚 Learn through in-depth tutorials and guides.</li>
+              <li>🚀 Practice and debug your code in real-time.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <div class="interactive-item">
+        <div class="v-content">
+          <h2>Playground</h2>
+          <p>
+            Explore and visualize algorithms in an interactive way! Our
+            Playground lets you experiment, debug, and learn at your own pace.
+          </p>
+          <a href="#playground" class="explore-button">Get Started</a>
+        </div>
+        <div class="video-wrapper">
+          <video autoplay loop muted playsinline class="video">
+            <source src="./assets/vedio/playground_page.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      <div class="interactive-item">
+        <div class="video-wrapper">
+          <!-- <iframe  width="560" height="315" src="https://www.youtube.com/embed/znqUwx0b0HI?si=thGayt-iBtqC0MeP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+
+          <video autoplay loop muted playsinline class="video">
+            <source src="./assets/vedio/learn_page.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+
+          <!-- <video id="myVideo-web" autoplay="" muted="" loop="" playsinline="" poster="" preload="auto" style="background-color: #ffffff;" class="video">
+            <source src="https://www.youtube.com/embed/znqUwx0b0HI?autoplay=1&loop=1&mute=1&playlist=znqUwx0b0HI" type="video/mp4">
+            Your browser does not support the video tag.
+          </video> -->
+
+          <!-- <div class="video-container">
+            <iframe 
+    width="560" 
+    height="515" 
+    src="https://www.youtube.com/embed/zaAACjaWeXk?autoplay=1&loop=1&mute=1&controls=0" 
+    title="YouTube video player" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+          </div> -->
+        </div>
+        <div class="v-content">
+          <h2>Learn</h2>
+          <p>
+            Dive deep into the world of algorithms! Our Learn section provides
+            tutorials, visual guides, and step-by-step explanations.
+          </p>
+          <a href="#playground" class="explore-button">Get Started</a>
+        </div>
+      </div>
+    </section>
+
+    <!--  -->
+    <section class="content" style="display: none">
       <section class="info-section">
         <div class="info-content">
           <img
@@ -76,9 +152,9 @@
       </section>
     </section>
 
-    <h2 class="about-title" id="about-us">About Us</h2>
-
     <section class="about-section">
+      <h3 class="about-title" id="about-us">About Us</h3>
+
       <div class="about-content">
         <article class="about-card">
           <h3 class="card-title">Our Mission</h3>
@@ -133,8 +209,7 @@
       </div>
     </section>
 
-    <footer class="footer">
-    </footer>
+    <footer class="footer"></footer>
 
     <script src="./js/script.js"></script>
 
@@ -149,5 +224,26 @@
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
       crossorigin="anonymous"
     ></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var videoweb = document.getElementById("myVideo-web");
+
+        function attemptPlay() {
+          videoweb.play().catch((error) => {
+            console.log("Autoplay was prevented:", error);
+          });
+        }
+
+        videoweb.addEventListener("canplaythrough", attemptPlay);
+
+        // For iOS, trigger the video play in a user interaction event
+        document.addEventListener("touchstart", function () {
+          if (videoweb.paused) {
+            attemptPlay();
+          }
+        });
+      });
+    </script>
   </body>
 </html>
