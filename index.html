@@ -42,10 +42,10 @@
       <section class="welcome-section">
         <div class="welcome-content">
           <div class="welcome-text">
-            <h1>Welcome to AlgoExpert!</h1>
+            <h2>Welcome to AlgoExpert!</h3>
             <p>
               Discover, learn, and master algorithms like never before. Dive
-              into interactive visualizations, step-by-step tutorials, and
+              into interactive visualizations and
               hands-on playgrounds designed to make algorithm learning easy and
               fun.
             </p>
@@ -60,15 +60,13 @@
 
       <div class="interactive-item">
         <div class="v-content">
-          <h2>Playground</h2>
-          <p>
-            Explore and visualize algorithms in an interactive way! Our
-            Playground lets you experiment, debug, and learn at your own pace.
-          </p>
-          <a href="#playground" class="explore-button">Get Started</a>
+          <h4>Playground</h4>
+          <p>Explore and visualize algorithms interactively in our Playground. Watch algorithms process data step by step, download detailed PDFs of visualizations, track your experiment history, and generate random inputs to test algorithm performance with different data sets.</p>
+
+          <a href="/AlgoExpert/playground.html?page=playground" class="explore-button">Get Started</a>
         </div>
         <div class="video-wrapper">
-          <video autoplay loop muted playsinline class="video">
+          <video autoplay loop muted playsinline class="video"  id="playground-content">
             <source src="./assets/vedio/playground_page.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -76,80 +74,18 @@
       </div>
       <div class="interactive-item">
         <div class="video-wrapper">
-          <!-- <iframe  width="560" height="315" src="https://www.youtube.com/embed/znqUwx0b0HI?si=thGayt-iBtqC0MeP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
-
           <video autoplay loop muted playsinline class="video">
             <source src="./assets/vedio/learn_page.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-
-          <!-- <video id="myVideo-web" autoplay="" muted="" loop="" playsinline="" poster="" preload="auto" style="background-color: #ffffff;" class="video">
-            <source src="https://www.youtube.com/embed/znqUwx0b0HI?autoplay=1&loop=1&mute=1&playlist=znqUwx0b0HI" type="video/mp4">
-            Your browser does not support the video tag.
-          </video> -->
-
-          <!-- <div class="video-container">
-            <iframe 
-    width="560" 
-    height="515" 
-    src="https://www.youtube.com/embed/zaAACjaWeXk?autoplay=1&loop=1&mute=1&controls=0" 
-    title="YouTube video player" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen>
-  </iframe>
-          </div> -->
         </div>
-        <div class="v-content">
-          <h2>Learn</h2>
-          <p>
-            Dive deep into the world of algorithms! Our Learn section provides
-            tutorials, visual guides, and step-by-step explanations.
-          </p>
-          <a href="#playground" class="explore-button">Get Started</a>
+        <div class="v-content" id="learn-content">
+          <h4>Learn</h4>
+            <p>On the Learn page, dive deep into algorithm details and gain a thorough understanding of how they work. Analyze their time and space complexity with interactive graphs, helping you visualize performance and optimize your approach.</p>
+
+          <a href="/AlgoExpert/learn.html?page=learn" class="explore-button">Get Started</a>
         </div>
       </div>
-    </section>
-
-    <!--  -->
-    <section class="content" style="display: none">
-      <section class="info-section">
-        <div class="info-content">
-          <img
-            src="./assets/dw.gif"
-            alt="Visual representation of an algorithm"
-            class="info-image"
-          />
-          <div class="info-text">
-            <h3 class="info-title">What Is Algorithm?</h3>
-            <p class="info-description">
-              It is a set of instructions for accomplishing a task. You can
-              think of algorithms as recipes for success. For example, a cookie
-              recipe will have a list of ingredients and specific instructions
-              on how to mix, bake, and decorate them.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="purpose-section">
-        <div class="purpose-content">
-          <div class="purpose-text">
-            <h3 class="purpose-title">Purpose of Algorithm</h3>
-            <p class="purpose-description">
-              Algorithms are used to perform calculations, find information in
-              databases, and more. They are also used in machine learning to
-              help machines learn to identify patterns and make decisions based
-              on data.
-            </p>
-          </div>
-          <img
-            src="./assets/im3.gif"
-            alt="Illustration of algorithm applications"
-            class="purpose-image"
-          />
-        </div>
-      </section>
     </section>
 
     <section class="about-section">
@@ -224,26 +160,5 @@
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
       crossorigin="anonymous"
     ></script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var videoweb = document.getElementById("myVideo-web");
-
-        function attemptPlay() {
-          videoweb.play().catch((error) => {
-            console.log("Autoplay was prevented:", error);
-          });
-        }
-
-        videoweb.addEventListener("canplaythrough", attemptPlay);
-
-        // For iOS, trigger the video play in a user interaction event
-        document.addEventListener("touchstart", function () {
-          if (videoweb.paused) {
-            attemptPlay();
-          }
-        });
-      });
-    </script>
   </body>
 </html>

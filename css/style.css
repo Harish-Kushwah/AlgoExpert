@@ -458,34 +458,15 @@ strong {
 .video:hover {
   transform: scale(1.009);
 }
-
-.video-container {
-  position: relative;
-  width: 100%;
-  /* max-width: 560px; */
-  height: auto;
-  overflow: hidden;
-  border-radius: 5px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  pointer-events: none;
-}
-
-.video-container iframe {
-  /* width: 100%; */
-  /* height: 100%; */
-
-  width: 800px;
-  height: 600px;
-  border: none;
-}
-
 .interactive-item:nth-child(even) {
   flex-direction: row; /* Alternate layout */
   background-color: #eceef9cf;
   padding: 10px 0px;
   border-radius: 5px;
 }
-
+#learn-content,#playground-content{
+  margin-left: 20px;
+}
 @media (max-width: 768px) {
   .interactive-video-container {
     padding: 5px;
@@ -500,6 +481,9 @@ strong {
     flex-direction: column; /* Alternate layout */
   }
 
+  #learn-content,#playground-content{
+    margin-left: 0px;
+  }
   .v-content,
   .video-wrapper {
     max-width: 100%;
