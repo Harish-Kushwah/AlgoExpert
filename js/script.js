@@ -148,7 +148,7 @@ function addClassToActiveLink(page_name) {
     for (let bar of bars) {
         bar.classList.remove("active-a");
     }
-    document.getElementById(page_name).classList.add("active-a");
+    document.getElementById(page_name)?.classList.add("active-a");
 }
 
 function activatePageLink() {

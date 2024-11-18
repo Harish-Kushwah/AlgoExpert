@@ -5,6 +5,7 @@ let isPaused = false;
 let isReset = false;
 let isSorted = false;
 let isDownloadPdfMsgVisibleInLog = false;
+const TOAST_ANIMATION_TIME = 5000;
 
 const { jsPDF } = window.jspdf; // Correctly access jsPDF
 
@@ -357,7 +358,16 @@ async function bucketSort() {
 // Event listener to handle pause
 pauseButton.addEventListener('click', () => {
     isPaused = !isPaused;
-    pauseButton.textContent = isPaused ? 'Resume' : 'Pause';
+    pauseButton.textContent = isPaused ? 'Resume' : 'Pause' ;
+    if(isPaused){
+        showToast("Visualization paused","info",TOAST_ANIMATION_TIME);
+    }
+    else{
+        showToast("Visualization resumed","info",TOAST_ANIMATION_TIME);
+
+    }
+   
+
 });
 
 // Handle pause state
@@ -371,6 +381,8 @@ async function handlePause() {
 rerunButton.addEventListener('click', async () => {
     resetVisualization();
     activateStartBtn();
+    showToast("Playground reset successfully","success",TOAST_ANIMATION_TIME);
+
 });
 
 // Speed control
@@ -413,11 +425,13 @@ function resetVisualization() {
 }
 function startVisualization() {
     if (numbers.value.length == 0) {
-        alert("Enter Numbers");
+        showToast("Enter Numbers","warning",TOAST_ANIMATION_TIME);
+
 
     }
     else if (selectAlgorithm.value == 'null') {
-        alert('Select Algorithm');
+        showToast("Select Algorithm","warning",TOAST_ANIMATION_TIME);
+
     }
     else {
         graphContainer.style.display = "block";
@@ -466,6 +480,8 @@ startButton.addEventListener('click', () => {
             algorithm: selectAlgorithm.value,
             date: new Date().toLocaleString(),
         });
+
+        showToast("Visualization Started","success",TOAST_ANIMATION_TIME);
     }
 
 });
@@ -508,6 +524,9 @@ generateRandomArrayBtn.addEventListener('click', () => {
     // maxArraySize.value = '';
     // minArraySize.value = '';
 
+    showToast("Random numbers generated","info",TOAST_ANIMATION_TIME);
+
+
 
 });
 
@@ -517,6 +536,8 @@ clearPage.addEventListener('click', () => {
     numbers.value = '';
     selectAlgorithm.value = 'null'
     activateStartBtn();
+    showToast("Page cleared","info",TOAST_ANIMATION_TIME);
+
 
 })
 
@@ -537,7 +558,7 @@ async function generatePDF() {
         }
         pdfDoc.addImage(snapshots[i], 'PNG', 10, 10, 180, 160); // Adjust dimensions
     }
-    pdfDoc.save('Algorithm_Visualization.pdf'); // Save the PDF
+    pdfDoc.save(`${selectAlgorithm.value}_visualization.pdf`); // Save the PDF
 
 }
 setInterval(() => {
@@ -548,6 +569,8 @@ setInterval(() => {
         downloadBtn.classList.remove('deactivate-icon');
         if (!isDownloadPdfMsgVisibleInLog) {
             log(`Visualization PDF is ready for download`);
+            showToast("Visualization PDF is ready for download","success",TOAST_ANIMATION_TIME);
+
             isDownloadPdfMsgVisibleInLog = true;
         }
     }
@@ -556,9 +579,13 @@ setInterval(() => {
 downloadBtn.addEventListener('click', function () {
     if (isSorted) {
         generatePDF();
+        showToast("PDF downloading started","info",TOAST_ANIMATION_TIME);
+
     }
     else {
         alert('Sorting Is not completed');
+        showToast("Sorting Is not completed","warning",TOAST_ANIMATION_TIME);
+
     } // Call your sorting function
 });
 
@@ -570,6 +597,8 @@ function loadHistoryData(id) {
         })
         numbers.value = allHistory[0].numbers
         selectAlgorithm.value = allHistory[0].algorithm;
+        showToast("History data loaded","info",TOAST_ANIMATION_TIME);
+
     }
 
 }
