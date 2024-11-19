@@ -105,56 +105,56 @@ function createComplexityAnalysis(data) {
 
 function createAlgorithmSection(algorithms) {
     const algoSection = document.querySelector(".algo-section")
-   
-    algorithms.forEach((algo,index)=>{
 
-         // Create the div element with the class 'algorithm'
-    const algorithmTitleDiv = document.createElement('div');
-    algorithmTitleDiv.classList.add('algorithm');
-    algorithmTitleDiv.id = index;
-    algorithmTitleDiv.addEventListener("click",()=>{
-        showPage(algorithmTitleDiv.id);
-        algorithmTitleDiv.classList.add("active-bar");
-    })
-    
+    algorithms.forEach((algo, index) => {
 
-    // Create the paragraph element
-    const paragraph = document.createElement('p');
-    paragraph.textContent = algo.title // Set the text content
+        // Create the div element with the class 'algorithm'
+        const algorithmTitleDiv = document.createElement('div');
+        algorithmTitleDiv.classList.add('algorithm');
+        algorithmTitleDiv.id = index;
+        algorithmTitleDiv.addEventListener("click", () => {
+            showPage(algorithmTitleDiv.id);
+            algorithmTitleDiv.classList.add("active-bar");
+        })
 
-    // Append the paragraph to the div
-    algorithmTitleDiv.appendChild(paragraph);
 
-    // Return the created div
-    algoSection.appendChild(algorithmTitleDiv);
+        // Create the paragraph element
+        const paragraph = document.createElement('p');
+        paragraph.textContent = algo.title // Set the text content
+
+        // Append the paragraph to the div
+        algorithmTitleDiv.appendChild(paragraph);
+
+        // Return the created div
+        algoSection.appendChild(algorithmTitleDiv);
 
     })
 }
-function addClassToActiveBar(index){
+function addClassToActiveBar(index) {
     const bars = document.querySelectorAll(".algorithm");
-    for(let bar of bars){
+    for (let bar of bars) {
         bar.classList.remove("active-bar");
     }
     document.getElementById(index).classList.add("active-bar");
 }
-function showPage(index=0){
+function showPage(index = 0) {
     // bodySection.innerHTML = '';
     clearHtml();
     createHeaderSection(data[index]);
     addSection(data[index]);
     createComplexityAnalysis(data[index]);
-    new ComplexityChart(contentSection,data[index]).paintChart();
+    new ComplexityChart(contentSection, data[index]).paintChart();
     addClassToActiveBar(index);
 
 }
 createAlgorithmSection(data);
 showPage(0);
 
-function clearHtml(){
+function clearHtml() {
     document.querySelector(".content-section").innerHTML = "";
     document.querySelector(".header-section").innerHTML = "";
     document.querySelector(".l-right-container").innerHTML = "";
-   
+
 }
 
 

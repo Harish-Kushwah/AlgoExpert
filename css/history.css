@@ -51,7 +51,7 @@
 .number {
   overflow: hidden;
 }
-.history-gif{
+.history-gif {
   aspect-ratio: 1.43;
   object-fit: contain;
   object-position: center;
@@ -59,24 +59,23 @@
   border-radius: 10px;
   margin-bottom: 10px;
 }
-.start-visualization-section{
+.start-visualization-section {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 50px;
 }
-.start-visualization{
+.start-visualization {
   border: 0.5px;
   border-radius: 2px;
   color: white;
   background-color: #7b2bf4;
   padding: 10px 13px;
 }
-.start-visualization:hover{
+.start-visualization:hover {
   background-color: #6a17e6;
   transition-duration: 0.5s;
-
 }
 @media only screen and (max-width: 768px) {
   .offcanvas {

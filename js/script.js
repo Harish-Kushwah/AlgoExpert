@@ -27,7 +27,7 @@ function createNavbar() {
     logo.className = "logo";
     logo.innerHTML = 'Algo<span class="highlight">Expert</span>';
 
-    logo.addEventListener("click",()=>{
+    logo.addEventListener("click", () => {
         window.location.href = `${BASE_URL}/?page=home`;
     })
     // Create navbar toggler button
@@ -58,9 +58,9 @@ function createNavbar() {
 
     // Add nav items
     const navItems = [
-        { text: "Home", href: `${BASE_URL}/`, class: "nav-link", ariaCurrent: "page" ,page_name : "home"},
-        { text: "Playground", href: `${BASE_URL}/playground.html`, class: "nav-link",page_name : "playground" },
-        { text: "Learn", href: `${BASE_URL}/learn.html`, class: "nav-link" ,page_name : "learn"},
+        { text: "Home", href: `${BASE_URL}/`, class: "nav-link", ariaCurrent: "page", page_name: "home" },
+        { text: "Playground", href: `${BASE_URL}/playground.html`, class: "nav-link", page_name: "playground" },
+        { text: "Learn", href: `${BASE_URL}/learn.html`, class: "nav-link", page_name: "learn" },
     ];
 
     navItems.forEach((item, index) => {
@@ -122,9 +122,9 @@ function createFooter() {
     socialIcons.className = "social-icons";
 
     const socialIconsData = [
-        { src: "./assets/github.png", alt: "Instagram", class: "social-icon",href:"https://github.com/Harish-Kushwah/AlgoExpert" },
-        { src: "./assets/gmail.png", alt: "Facebook", class: "social-icon" ,href:"mailto:harishkushwah54321@gmail.com"},
-        { src: "./assets/twitter.png", alt: "Twitter", class: "social-icon" ,href:"https://twitter.com/HarishKushwah_7"},
+        { src: "./assets/github.png", alt: "Instagram", class: "social-icon", href: "https://github.com/Harish-Kushwah/AlgoExpert" },
+        { src: "./assets/gmail.png", alt: "Facebook", class: "social-icon", href: "mailto:harishkushwah54321@gmail.com" },
+        { src: "./assets/twitter.png", alt: "Twitter", class: "social-icon", href: "https://twitter.com/HarishKushwah_7" },
     ];
 
     socialIconsData.forEach(icon => {

@@ -83,7 +83,7 @@
 .start {
   background-color: #7b2bf4;
 }
-.start:hover{
+.start:hover {
   background-color: #6f10fe;
   transition-duration: 0.5s;
 }
@@ -93,7 +93,6 @@
 .reset:hover {
   background-color: #068515;
   transition-duration: 0.5s;
-
 }
 .pause {
   background-color: #ff295e;
@@ -101,7 +100,6 @@
 .pause:hover {
   background-color: #fa114b;
   transition-duration: 0.5s;
-
 }
 .generate {
   margin: 10px 0px;
@@ -236,14 +234,13 @@ pre[class*="language-"] {
   justify-content: flex-start;
   margin: 5px;
 }
-.btns-section{
+.btns-section {
   width: 100%;
   margin: 10px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
-
 
 @media only screen and (max-width: 768px) {
   .container1 {

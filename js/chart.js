@@ -6,7 +6,7 @@ class ComplexityChart {
         this.data = data;
     }
 
-    paintChart(n = 10, k = 10, timeComplexityFunc=this.data.timeComplexityFunc, spaceComplexityFunc=this.data.spaceComplexityFunc) {
+    paintChart(n = 10, k = 10, timeComplexityFunc = this.data.timeComplexityFunc, spaceComplexityFunc = this.data.spaceComplexityFunc) {
         // Get the context of the canvas
 
         if (this.chart) {
@@ -20,8 +20,8 @@ class ComplexityChart {
         const inputSizes = Array.from({ length: n }, () => Math.floor(Math.random() * (max - min + 1)) + min).sort();
 
         // Sample data for different input sizes
-        const timeComplexity = inputSizes.map(timeComplexityFunc); 
-        const spaceComplexity = inputSizes.map(spaceComplexityFunc); 
+        const timeComplexity = inputSizes.map(timeComplexityFunc);
+        const spaceComplexity = inputSizes.map(spaceComplexityFunc);
 
         // Create the Chart.js line chart with two datasets
         this.chart = new Chart(this.ctx, {
@@ -115,11 +115,11 @@ class ComplexityChart {
         plotButton.id = 'plot-chart';
         plotButton.textContent = 'Plot Chart';
         group.appendChild(plotButton);
-      
+
         plotButton.addEventListener("click", () => {
             const n = document.getElementById("total-size").value;
             const k = document.getElementById("max-no").value;
-            
+
             if (n.length == 0) {
                 alert("Enter Value of n");
             }

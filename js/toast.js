@@ -1,12 +1,12 @@
 let icon = {
     success:
-    '<span class="material-symbols-outlined">task_alt</span>',
+        '<span class="material-symbols-outlined">task_alt</span>',
     danger:
-    '<span class="material-symbols-outlined">error</span>',
+        '<span class="material-symbols-outlined">error</span>',
     warning:
-    '<span class="material-symbols-outlined">warning</span>',
+        '<span class="material-symbols-outlined">warning</span>',
     info:
-    '<span class="material-symbols-outlined">info</span>',
+        '<span class="material-symbols-outlined">info</span>',
 };
 
 const showToast = (
@@ -29,9 +29,9 @@ const showToast = (
                       </div>`;
     duration = duration || 5000;
     box.querySelector(".m-toast-progress").style.animationDuration =
-            `${duration / 1000}s`;
+        `${duration / 1000}s`;
 
-    let toastAlready = 
+    let toastAlready =
         document.body.querySelector(".toast");
     if (toastAlready) {
         toastAlready.remove();

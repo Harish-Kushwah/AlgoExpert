@@ -464,7 +464,8 @@ strong {
   padding: 10px 0px;
   border-radius: 5px;
 }
-#learn-content,#playground-content{
+#learn-content,
+#playground-content {
   margin-left: 20px;
 }
 @media (max-width: 768px) {
@@ -481,7 +482,8 @@ strong {
     flex-direction: column; /* Alternate layout */
   }
 
-  #learn-content,#playground-content{
+  #learn-content,
+  #playground-content {
     margin-left: 0px;
   }
   .v-content,

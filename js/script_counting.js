@@ -203,8 +203,6 @@ function displayDigitBucketsForBucketSort(buckets, bucketInfo) {
 // Function for Radix Sort
 async function radixSort() {
     deactivateStartBtn();
-
-
     maxDigit = Math.max(...array).toString().length;
     for (let digit = 0; digit < maxDigit; digit++) {
 
@@ -358,15 +356,15 @@ async function bucketSort() {
 // Event listener to handle pause
 pauseButton.addEventListener('click', () => {
     isPaused = !isPaused;
-    pauseButton.textContent = isPaused ? 'Resume' : 'Pause' ;
-    if(isPaused){
-        showToast("Visualization paused","info",TOAST_ANIMATION_TIME);
+    pauseButton.textContent = isPaused ? 'Resume' : 'Pause';
+    if (isPaused) {
+        showToast("Visualization paused", "info", TOAST_ANIMATION_TIME);
     }
-    else{
-        showToast("Visualization resumed","info",TOAST_ANIMATION_TIME);
+    else {
+        showToast("Visualization resumed", "info", TOAST_ANIMATION_TIME);
 
     }
-   
+
 
 });
 
@@ -381,7 +379,7 @@ async function handlePause() {
 rerunButton.addEventListener('click', async () => {
     resetVisualization();
     activateStartBtn();
-    showToast("Playground reset successfully","success",TOAST_ANIMATION_TIME);
+    showToast("Playground reset successfully", "success", TOAST_ANIMATION_TIME);
 
 });
 
@@ -425,12 +423,12 @@ function resetVisualization() {
 }
 function startVisualization() {
     if (numbers.value.length == 0) {
-        showToast("Enter Numbers","warning",TOAST_ANIMATION_TIME);
+        showToast("Enter Numbers", "warning", TOAST_ANIMATION_TIME);
 
 
     }
     else if (selectAlgorithm.value == 'null') {
-        showToast("Select Algorithm","warning",TOAST_ANIMATION_TIME);
+        showToast("Select Algorithm", "warning", TOAST_ANIMATION_TIME);
 
     }
     else {
@@ -481,7 +479,7 @@ startButton.addEventListener('click', () => {
             date: new Date().toLocaleString(),
         });
 
-        showToast("Visualization Started","success",TOAST_ANIMATION_TIME);
+        showToast("Visualization Started", "success", TOAST_ANIMATION_TIME);
     }
 
 });
@@ -524,7 +522,7 @@ generateRandomArrayBtn.addEventListener('click', () => {
     // maxArraySize.value = '';
     // minArraySize.value = '';
 
-    showToast("Random numbers generated","info",TOAST_ANIMATION_TIME);
+    showToast("Random numbers generated", "info", TOAST_ANIMATION_TIME);
 
 
 
@@ -536,7 +534,7 @@ clearPage.addEventListener('click', () => {
     numbers.value = '';
     selectAlgorithm.value = 'null'
     activateStartBtn();
-    showToast("Page cleared","info",TOAST_ANIMATION_TIME);
+    showToast("Page cleared", "info", TOAST_ANIMATION_TIME);
 
 
 })
@@ -569,7 +567,7 @@ setInterval(() => {
         downloadBtn.classList.remove('deactivate-icon');
         if (!isDownloadPdfMsgVisibleInLog) {
             log(`Visualization PDF is ready for download`);
-            showToast("Visualization PDF is ready for download","success",TOAST_ANIMATION_TIME);
+            showToast("Visualization PDF is ready for download", "success", TOAST_ANIMATION_TIME);
 
             isDownloadPdfMsgVisibleInLog = true;
         }
@@ -579,12 +577,12 @@ setInterval(() => {
 downloadBtn.addEventListener('click', function () {
     if (isSorted) {
         generatePDF();
-        showToast("PDF downloading started","info",TOAST_ANIMATION_TIME);
+        showToast("PDF downloading started", "info", TOAST_ANIMATION_TIME);
 
     }
     else {
         alert('Sorting Is not completed');
-        showToast("Sorting Is not completed","warning",TOAST_ANIMATION_TIME);
+        showToast("Sorting Is not completed", "warning", TOAST_ANIMATION_TIME);
 
     } // Call your sorting function
 });
@@ -597,7 +595,7 @@ function loadHistoryData(id) {
         })
         numbers.value = allHistory[0].numbers
         selectAlgorithm.value = allHistory[0].algorithm;
-        showToast("History data loaded","info",TOAST_ANIMATION_TIME);
+        showToast("History data loaded", "info", TOAST_ANIMATION_TIME);
 
     }
 

@@ -898,7 +898,7 @@ function copyCode(button) {
         .then(() => {
             // Show feedback to the user
             button.classList.add('active-copy-icon');
-            showToast("Code Copied","info",TOAST_ANIMATION_TIME);
+            showToast("Code Copied", "info", TOAST_ANIMATION_TIME);
             setTimeout(() => {
                 button.classList.remove('active-copy-icon');
             }, 2000);
