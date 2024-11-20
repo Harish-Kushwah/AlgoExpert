@@ -108,3 +108,13 @@ addHistoryList(getAllHistory());
 
 clearHistory.addEventListener('click', clearAllHistory);
 
+function updateIcon(id){
+  let allHistory = getAllHistory()
+  allHistory.map((history) => {
+    if(history.id == id){
+      history.status_icon = 'check.png';
+    }
+  })
+  addHistoryList(allHistory);
+  updateStorage(allHistory);
+}

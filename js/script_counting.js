@@ -5,6 +5,7 @@ let isPaused = false;
 let isReset = false;
 let isSorted = false;
 let isDownloadPdfMsgVisibleInLog = false;
+let currentHistoryId = null;
 const TOAST_ANIMATION_TIME = 5000;
 
 const { jsPDF } = window.jspdf; // Correctly access jsPDF
@@ -471,9 +472,10 @@ function guidGenerator() {
 
 startButton.addEventListener('click', () => {
     if (startVisualization()) {
+        currentHistoryId = guidGenerator();
         addHistory({
-            id: guidGenerator(),
-            status_icon: 'check.png',
+            id:currentHistoryId ,
+            status_icon: isSorted ?'check.png':'mark.png',
             numbers: array,
             algorithm: selectAlgorithm.value,
             date: new Date().toLocaleString(),
@@ -572,6 +574,12 @@ setInterval(() => {
             isDownloadPdfMsgVisibleInLog = true;
         }
     }
+
+    if(isSorted & currentHistoryId!=null){
+        updateIcon(currentHistoryId);
+        currentHistoryId = null;
+    }
+
 }, 2000);
 
 downloadBtn.addEventListener('click', function () {
