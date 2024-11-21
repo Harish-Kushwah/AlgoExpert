@@ -1,12 +1,12 @@
 let icon = {
     success:
-        '<span class="material-symbols-outlined">task_alt</span>',
+        '<img src="./assets/icon/task_alt.svg" alt="" class="m-icon">',
     danger:
         '<span class="material-symbols-outlined">error</span>',
     warning:
-        '<span class="material-symbols-outlined">warning</span>',
+    '<img src="./assets/icon/warning.svg" alt="" class="m-icon">',
     info:
-        '<span class="material-symbols-outlined">info</span>',
+    '<img src="./assets/icon/error.svg" alt="" class="m-icon">',
 };
 
 const showToast = (
