@@ -154,8 +154,9 @@ function addClassToActiveLink(page_name) {
 function activatePageLink() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const page_name = urlParams.get('page');
-    addClassToActiveLink(page_name);
+    console.log(window.location.href);
+    // const page_name = urlParams.get('page');
+    // addClassToActiveLink(page_name);
 }
 
 createNavbar();
