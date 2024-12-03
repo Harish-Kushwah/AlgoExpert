@@ -297,7 +297,6 @@ async function bucketSort() {
     for (let i = 0; i < len; i++) {
         if (isPaused) await handlePause();
         if (isReset) {
-            console.log('reset the bucket sort')
             return;
         }
 

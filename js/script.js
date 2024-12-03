@@ -1,3 +1,5 @@
+const BASE_URL = '/AlgoExpert';
+
 function toggleImage() {
     const image = document.getElementById("toggleImage");
     if (!image.classList.contains("activeMenu")) {
@@ -11,8 +13,6 @@ function toggleImage() {
 }
 
 function createNavbar() {
-
-    let BASE_URL = '/AlgoExpert';
 
     // Create main nav element
     const nav = document.createElement("nav");
@@ -154,9 +154,11 @@ function addClassToActiveLink(page_name) {
 function activatePageLink() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    console.log(window.location.href);
-    // const page_name = urlParams.get('page');
-    // addClassToActiveLink(page_name);
+    const page_name = urlParams.get('page');
+    if(page_name==null){
+        window.location.href = `${BASE_URL}/?page=home`;
+    }
+    addClassToActiveLink(page_name);
 }
 
 createNavbar();
